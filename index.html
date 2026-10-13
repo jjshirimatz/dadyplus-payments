@@ -1,1 +1,181 @@
 
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+<title>DADYPLUS | Malipo</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ min-height:100vh;
+ background:#f1f5fb;
+ font-family:Arial,sans-serif;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ color:#172b4d;
+}
+.card{
+ background:white;
+ width:100%;
+ max-width:420px;
+ padding:28px 22px;
+ border-radius:22px;
+ box-shadow:0 12px 35px #123b6815;
+}
+.brand{
+ text-align:center;
+ color:#1255b7;
+ font-weight:800;
+ font-size:23px;
+}
+h2{text-align:center;font-size:21px}
+.subtitle{
+ text-align:center;
+ color:#64748b;
+ font-size:14px;
+}
+.amount{
+ background:#edf5ff;
+ padding:22px;
+ border-radius:16px;
+ text-align:center;
+ margin:24px 0;
+}
+.amount small{color:#64748b}
+.amount strong{
+ display:block;
+ font-size:34px;
+ color:#1255b7;
+ margin-top:7px;
+}
+label{
+ display:block;
+ font-weight:600;
+ margin-bottom:9px;
+}
+input{
+ width:100%;
+ padding:16px;
+ border:1px solid #cbd5e1;
+ border-radius:12px;
+ font-size:17px;
+ outline:none;
+}
+input:focus{border-color:#1255b7}
+button{
+ width:100%;
+ background:#1255b7;
+ color:white;
+ padding:17px;
+ border:0;
+ border-radius:12px;
+ font-size:17px;
+ font-weight:bold;
+ margin-top:20px;
+ cursor:pointer;
+}
+button:disabled{opacity:.6}
+#message{
+ text-align:center;
+ font-size:14px;
+ line-height:1.6;
+ margin-top:18px;
+}
+.note{
+ color:#64748b;
+ text-align:center;
+ font-size:12px;
+ margin-top:22px;
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+ <div class="brand">DADYPLUS</div>
+ <h2>Kamilisha Malipo</h2>
+ <p class="subtitle">
+  Lipa kwa usalama kupitia simu yako
+ </p>
+
+ <div class="amount">
+  <small>Kiasi cha kulipa</small>
+  <strong>TSh 4,000</strong>
+ </div>
+
+ <form id="paymentForm">
+  <label>Namba ya simu ya malipo</label>
+  <input
+   id="phone"
+   type="tel"
+   inputmode="tel"
+   placeholder="07XXXXXXXX"
+   maxlength="13"
+   required
+  >
+  <button id="payButton" type="submit">
+   LIPA TSH 4,000
+  </button>
+ </form>
+
+ <div id="message" role="status"></div>
+
+ <p class="note">
+  Utapokea ombi la kuthibitisha malipo
+  kwenye simu yako.
+ </p>
+</div>
+
+<script>
+const form = document.getElementById("paymentForm");
+const button = document.getElementById("payButton");
+const message = document.getElementById("message");
+
+form.addEventListener("submit", async (e) => {
+ e.preventDefault();
+
+ const phone = document.getElementById("phone")
+  .value.trim().replace(/\s|-/g, "");
+
+ if (!/^(0[67]\d{8}|255[67]\d{8}|\+255[67]\d{8})$/.test(phone)) {
+  message.textContent = "Weka namba sahihi ya Tanzania.";
+  return;
+ }
+
+ button.disabled = true;
+ message.textContent = "Tunasubiri mfumo wa malipo...";
+
+ try {
+  const response = await fetch(
+   "/.netlify/functions/create-payment",
+   {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({phone})
+   }
+  );
+
+  const result = await response.json();
+
+  if (!response.ok || !result.success) {
+   throw new Error(result.message || "Malipo hayajaanzishwa.");
+  }
+
+  message.textContent =
+   "Ombi limetumwa. Angalia simu yako na uthibitishe malipo. Hii bado si uthibitisho wa malipo kukamilika.";
+
+ } catch(error) {
+  message.textContent = error.message;
+ } finally {
+  button.disabled = false;
+ }
+});
+</script>
+</body>
+</html>
