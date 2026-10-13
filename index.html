@@ -1,14 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="sw">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1">
-<title>DADYPLUS | Malipo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1255b7">
+
+<title>BIASHARA DIGITAL | Malipo</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+ box-sizing:border-box;
+}
+
 body{
  margin:0;
  min-height:100vh;
@@ -20,6 +23,7 @@ body{
  padding:20px;
  color:#172b4d;
 }
+
 .card{
  background:white;
  width:100%;
@@ -28,18 +32,28 @@ body{
  border-radius:22px;
  box-shadow:0 12px 35px #123b6815;
 }
+
 .brand{
  text-align:center;
  color:#1255b7;
  font-weight:800;
  font-size:23px;
+ letter-spacing:.5px;
 }
-h2{text-align:center;font-size:21px}
+
+h2{
+ text-align:center;
+ font-size:21px;
+ margin:22px 0 8px;
+}
+
 .subtitle{
  text-align:center;
  color:#64748b;
  font-size:14px;
+ line-height:1.6;
 }
+
 .amount{
  background:#edf5ff;
  padding:22px;
@@ -47,27 +61,39 @@ h2{text-align:center;font-size:21px}
  text-align:center;
  margin:24px 0;
 }
-.amount small{color:#64748b}
+
+.amount small{
+ color:#64748b;
+}
+
 .amount strong{
  display:block;
  font-size:34px;
  color:#1255b7;
  margin-top:7px;
 }
+
 label{
  display:block;
  font-weight:600;
- margin-bottom:9px;
+ font-size:14px;
+ margin:18px 0 9px;
 }
+
 input{
  width:100%;
  padding:16px;
  border:1px solid #cbd5e1;
  border-radius:12px;
- font-size:17px;
+ font-size:16px;
  outline:none;
+ background:white;
 }
-input:focus{border-color:#1255b7}
+
+input:focus{
+ border-color:#1255b7;
+}
+
 button{
  width:100%;
  background:#1255b7;
@@ -75,33 +101,166 @@ button{
  padding:17px;
  border:0;
  border-radius:12px;
- font-size:17px;
+ font-size:16px;
  font-weight:bold;
  margin-top:20px;
  cursor:pointer;
 }
-button:disabled{opacity:.6}
+
+button:disabled{
+ opacity:.6;
+ cursor:not-allowed;
+}
+
 #message{
  text-align:center;
  font-size:14px;
  line-height:1.6;
  margin-top:18px;
 }
+
 .note{
  color:#64748b;
  text-align:center;
  font-size:12px;
+ line-height:1.6;
  margin-top:22px;
 }
+
+.hidden{
+ display:none!important;
+}
+
+.network-choice{
+ display:flex;
+ gap:10px;
+ margin-top:18px;
+}
+
+.network-choice button{
+ margin:0;
+ padding:13px 8px;
+ font-size:13px;
+ border-radius:10px;
+ background:#edf5ff;
+ color:#1255b7;
+ border:1px solid #c8ddfa;
+}
+
+.network-choice button.active{
+ background:#1255b7;
+ color:white;
+ border-color:#1255b7;
+}
+
+.mpesa-box{
+ background:#f4f9ff;
+ border:1px solid #d6e7ff;
+ border-radius:16px;
+ padding:20px 15px;
+ margin-top:20px;
+}
+
+.mpesa-title{
+ font-size:17px;
+ font-weight:800;
+ color:#1255b7;
+ text-align:center;
+ margin-bottom:16px;
+}
+
+.payment-detail{
+ background:white;
+ border-radius:12px;
+ padding:15px;
+ text-align:center;
+ margin-bottom:12px;
+ border:1px solid #e2e8f0;
+}
+
+.payment-detail small{
+ display:block;
+ color:#64748b;
+ font-size:12px;
+ margin-bottom:7px;
+}
+
+.payment-detail strong{
+ display:block;
+ font-size:20px;
+ color:#172b4d;
+ overflow-wrap:anywhere;
+}
+
+.payment-detail .receiver{
+ font-size:14px;
+}
+
+.copy-button{
+ background:#e3efff;
+ color:#1255b7;
+ margin-top:10px;
+ padding:10px;
+ font-size:13px;
+}
+
+.instructions{
+ font-size:13px;
+ color:#475569;
+ line-height:1.8;
+ margin-top:15px;
+}
+
+.instructions strong{
+ color:#172b4d;
+}
+
+.warning{
+ background:#fff8e7;
+ border:1px solid #f4df9b;
+ padding:12px;
+ border-radius:10px;
+ font-size:12px;
+ line-height:1.6;
+ margin-top:15px;
+ color:#775500;
+}
+
+.success{
+ color:#087443;
+ font-weight:600;
+}
+
+.error{
+ color:#c62828;
+}
+
+.info{
+ color:#1255b7;
+}
+
+.back-button{
+ background:#eef3f9;
+ color:#334155;
+ margin-top:12px;
+}
+
 </style>
 </head>
 
 <body>
+
 <div class="card">
- <div class="brand">DADYPLUS</div>
+
+ <div class="brand">
+  BIASHARA DIGITAL
+ </div>
+
  <h2>Kamilisha Malipo</h2>
+
  <p class="subtitle">
-  Lipa kwa usalama kupitia simu yako
+  Lipia kitabu chako kwa usalama
+  kupitia simu yako.
  </p>
 
  <div class="amount">
@@ -109,54 +268,436 @@ button:disabled{opacity:.6}
   <strong>TSh 4,000</strong>
  </div>
 
+ <!-- MAIN FORM -->
+
  <form id="paymentForm">
-  <label>Namba ya simu ya malipo</label>
+
+  <label for="phone">
+   Namba ya simu ya malipo
+  </label>
+
   <input
    id="phone"
    type="tel"
    inputmode="tel"
    placeholder="07XXXXXXXX"
    maxlength="13"
+   autocomplete="tel"
    required
   >
+
+  <div class="network-choice">
+
+   <button
+    type="button"
+    id="autoChoice"
+    class="active"
+   >
+    Tambua Mtandao
+   </button>
+
+   <button
+    type="button"
+    id="mpesaChoice"
+   >
+    Vodacom M-Pesa
+   </button>
+
+  </div>
+
   <button id="payButton" type="submit">
-   LIPA TSH 4,000
+   ENDELEA KULIPA
   </button>
+
  </form>
 
- <div id="message" role="status"></div>
+
+ <!-- VODACOM PAYMENT SECTION -->
+
+ <div id="mpesaSection" class="hidden">
+
+  <div class="mpesa-box">
+
+   <div class="mpesa-title">
+    LIPA KWA VODACOM M-PESA
+   </div>
+
+   <div class="payment-detail">
+    <small>Kiasi cha kutuma</small>
+    <strong>TSh 4,000</strong>
+   </div>
+
+   <div class="payment-detail">
+    <small>Namba ya kupokea pesa</small>
+    <strong id="receiverNumber">
+     0791 935 461
+    </strong>
+
+    <button
+     type="button"
+     class="copy-button"
+     id="copyNumber"
+    >
+     NAKILI NAMBA
+    </button>
+   </div>
+
+   <div class="payment-detail">
+    <small>Jina la mpokeaji</small>
+    <strong class="receiver">
+     ABDALLAH MWAITA ABDALLAH
+    </strong>
+   </div>
+
+   <div class="instructions">
+    <strong>Maelekezo ya malipo:</strong>
+
+    <p>
+     1. Fungua huduma ya M-Pesa
+     kwenye simu yako.
+    </p>
+
+    <p>
+     2. Tuma <strong>TSh 4,000</strong>
+     kwenye namba iliyoonyeshwa hapo juu.
+    </p>
+
+    <p>
+     3. Hakikisha jina la mpokeaji
+     ni <strong>ABDALLAH MWAITA ABDALLAH</strong>
+     kabla ya kuthibitisha.
+    </p>
+
+    <p>
+     4. Baada ya kutuma pesa,
+     weka namba ya uthibitisho wa
+     muamala hapa chini.
+    </p>
+   </div>
+
+   <div class="warning">
+    Tafadhali usiwasilishe uthibitisho
+    kabla ya kutuma malipo.
+    Malipo yako yatakaguliwa kabla
+    ya kupokea kitabu.
+   </div>
+
+   <form
+    id="manualPaymentForm"
+    name="mpesa-payments"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+   >
+
+    <input
+     type="hidden"
+     name="form-name"
+     value="mpesa-payments"
+    >
+
+    <p class="hidden">
+     <label>
+      Usijaze sehemu hii:
+      <input name="bot-field">
+     </label>
+    </p>
+
+    <input
+     type="hidden"
+     id="submittedPhone"
+     name="phone"
+    >
+
+    <input
+     type="hidden"
+     name="amount"
+     value="4000"
+    >
+
+    <input
+     type="hidden"
+     name="payment_method"
+     value="Vodacom M-Pesa"
+    >
+
+    <label for="transactionCode">
+     Namba ya uthibitisho wa muamala
+    </label>
+
+    <input
+     id="transactionCode"
+     name="transaction_code"
+     type="text"
+     placeholder="Weka namba ya muamala"
+     maxlength="100"
+     autocomplete="off"
+     required
+    >
+
+    <button
+     id="verifyButton"
+     type="submit"
+    >
+     WASILISHA UTHIBITISHO
+    </button>
+
+   </form>
+
+  </div>
+
+  <button
+   type="button"
+   id="backButton"
+   class="back-button"
+  >
+   RUDI NYUMA
+  </button>
+
+ </div>
+
+ <div id="message" role="status" aria-live="polite"></div>
 
  <p class="note">
-  Utapokea ombi la kuthibitisha malipo
-  kwenye simu yako.
+  Malipo lazima yathibitishwe kabla
+  ya kupokea kitabu chako.
  </p>
+
 </div>
 
+
 <script>
-const form = document.getElementById("paymentForm");
-const button = document.getElementById("payButton");
-const message = document.getElementById("message");
 
-form.addEventListener("submit", async (e) => {
- e.preventDefault();
+const AMOUNT = 4000;
 
- const phone = document.getElementById("phone")
-  .value.trim().replace(/\s|-/g, "");
+const form =
+ document.getElementById("paymentForm");
 
- if (!/^(0[67]\d{8}|255[67]\d{8}|\+255[67]\d{8})$/.test(phone)) {
-  message.textContent = "Weka namba sahihi ya Tanzania.";
-  return;
+const manualForm =
+ document.getElementById("manualPaymentForm");
+
+const button =
+ document.getElementById("payButton");
+
+const verifyButton =
+ document.getElementById("verifyButton");
+
+const message =
+ document.getElementById("message");
+
+const phoneInput =
+ document.getElementById("phone");
+
+const mpesaSection =
+ document.getElementById("mpesaSection");
+
+const autoChoice =
+ document.getElementById("autoChoice");
+
+const mpesaChoice =
+ document.getElementById("mpesaChoice");
+
+const backButton =
+ document.getElementById("backButton");
+
+const copyNumber =
+ document.getElementById("copyNumber");
+
+let selectedMethod = "auto";
+
+
+function setMessage(text, type = "info") {
+
+ message.textContent = text;
+
+ message.className = type;
+
+}
+
+
+function normalizePhone(value) {
+
+ let phone = String(value)
+  .trim()
+  .replace(/[\s-]/g, "");
+
+ if (phone.startsWith("+255")) {
+  phone = "0" + phone.slice(4);
  }
 
- button.disabled = true;
- message.textContent = "Tunasubiri mfumo wa malipo...";
+ else if (phone.startsWith("255")) {
+  phone = "0" + phone.slice(3);
+ }
+
+ return phone;
+
+}
+
+
+function isValidPhone(phone) {
+
+ return /^0[67]\d{8}$/.test(phone);
+
+}
+
+
+/*
+ Vodacom prefixes:
+ 074, 075, 076
+
+ Kumbuka:
+ Number portability inaweza
+ kubadilisha mtandao halisi.
+*/
+
+function isVodacom(phone) {
+
+ return /^07[456]\d{7}$/.test(phone);
+
+}
+
+
+function setMethod(method) {
+
+ selectedMethod = method;
+
+ autoChoice.classList.toggle(
+  "active",
+  method === "auto"
+ );
+
+ mpesaChoice.classList.toggle(
+  "active",
+  method === "mpesa"
+ );
+
+ setMessage("");
+
+}
+
+
+autoChoice.addEventListener("click", () => {
+
+ setMethod("auto");
+
+});
+
+
+mpesaChoice.addEventListener("click", () => {
+
+ setMethod("mpesa");
+
+});
+
+
+function showMpesa(phone) {
+
+ document.getElementById(
+  "submittedPhone"
+ ).value = phone;
+
+ form.classList.add("hidden");
+
+ mpesaSection.classList.remove("hidden");
+
+ setMessage("");
+
+}
+
+
+backButton.addEventListener("click", () => {
+
+ mpesaSection.classList.add("hidden");
+
+ form.classList.remove("hidden");
+
+ setMessage("");
+
+});
+
+
+copyNumber.addEventListener("click", async () => {
 
  try {
+
+  await navigator.clipboard.writeText(
+   "0791935461"
+  );
+
+  copyNumber.textContent = "IMENAKILIWA";
+
+  setTimeout(() => {
+   copyNumber.textContent = "NAKILI NAMBA";
+  }, 2000);
+
+ } catch {
+
+  setMessage(
+   "Namba ya malipo ni 0791935461",
+   "info"
+  );
+
+ }
+
+});
+
+
+form.addEventListener("submit", async (e) => {
+
+ e.preventDefault();
+
+ const phone = normalizePhone(
+  phoneInput.value
+ );
+
+ if (!isValidPhone(phone)) {
+
+  setMessage(
+   "Weka namba sahihi ya Tanzania.",
+   "error"
+  );
+
+  return;
+
+ }
+
+ /*
+  Vodacom au mteja
+  aliyechagua M-Pesa.
+ */
+
+ if (
+  selectedMethod === "mpesa" ||
+  isVodacom(phone)
+ ) {
+
+  showMpesa(phone);
+
+  return;
+
+ }
+
+ /*
+  Mitandao mingine:
+  Abliner payment API.
+ */
+
+ button.disabled = true;
+
+ setMessage(
+  "Tunasubiri mfumo wa malipo...",
+  "info"
+ );
+
+ try {
+
   const response = await fetch(
    "/.netlify/functions/create-payment",
    {
     method:"POST",
-    headers:{"Content-Type":"application/json"},
+    headers:{
+     "Content-Type":"application/json"
+    },
     body:JSON.stringify({phone})
    }
   );
@@ -164,18 +705,136 @@ form.addEventListener("submit", async (e) => {
   const result = await response.json();
 
   if (!response.ok || !result.success) {
-   throw new Error(result.message || "Malipo hayajaanzishwa.");
+
+   throw new Error(
+    result.message ||
+    "Malipo hayajaanzishwa."
+   );
+
   }
 
-  message.textContent =
-   "Ombi limetumwa. Angalia simu yako na uthibitishe malipo. Hii bado si uthibitisho wa malipo kukamilika.";
+  setMessage(
+   "Ombi la malipo limetumwa. " +
+   "Angalia simu yako na uthibitishe malipo. " +
+   "Subiri malipo yakaguliwe kabla ya kupokea kitabu.",
+   "success"
+  );
 
  } catch(error) {
-  message.textContent = error.message;
+
+  setMessage(
+   error.message ||
+   "Tatizo limetokea. Jaribu tena.",
+   "error"
+  );
+
  } finally {
+
   button.disabled = false;
+
  }
+
 });
+
+
+/*
+ Manual M-Pesa submission
+ kupitia Netlify Forms.
+*/
+
+manualForm.addEventListener("submit", async (e) => {
+
+ e.preventDefault();
+
+ const phone = document.getElementById(
+  "submittedPhone"
+ ).value;
+
+ const code = document.getElementById(
+  "transactionCode"
+ ).value.trim();
+
+ if (!isValidPhone(phone)) {
+
+  setMessage(
+   "Namba ya simu si sahihi.",
+   "error"
+  );
+
+  return;
+
+ }
+
+ if (code.length < 5) {
+
+  setMessage(
+   "Weka namba sahihi ya uthibitisho wa muamala.",
+   "error"
+  );
+
+  return;
+
+ }
+
+ verifyButton.disabled = true;
+
+ setMessage(
+  "Tunawasilisha taarifa zako...",
+  "info"
+ );
+
+ try {
+
+  const formData = new FormData(manualForm);
+
+  const encoded = new URLSearchParams();
+
+  for (const [key, value] of formData.entries()) {
+   encoded.append(key, value);
+  }
+
+  const response = await fetch("/", {
+   method:"POST",
+   headers:{
+    "Content-Type":
+     "application/x-www-form-urlencoded"
+   },
+   body:encoded.toString()
+  });
+
+  if (!response.ok) {
+
+   throw new Error(
+    "Imeshindikana kuwasilisha taarifa. Jaribu tena."
+   );
+
+  }
+
+  manualForm.reset();
+
+  setMessage(
+   "Uthibitisho wako umewasilishwa. " +
+   "Taarifa zako zinasubiri kukaguliwa. " +
+   "Kitabu kitatolewa baada ya malipo kuthibitishwa.",
+   "success"
+  );
+
+ } catch(error) {
+
+  setMessage(
+   error.message,
+   "error"
+  );
+
+ } finally {
+
+  verifyButton.disabled = false;
+
+ }
+
+});
+
 </script>
+
 </body>
 </html>
