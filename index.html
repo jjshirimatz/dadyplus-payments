@@ -18,6 +18,23 @@
 
 <title>Tiba ya Nguvu za Kiume</title>
 
+<!-- =====================================
+     IMAGE PERFORMANCE
+===================================== -->
+
+<link
+  rel="preconnect"
+  href="https://raw.githubusercontent.com"
+  crossorigin
+>
+
+<link
+  rel="preload"
+  as="image"
+  href="https://raw.githubusercontent.com/jjshirimatz/dadyplus-payments/main/file_00000000edc88211bf9bf02b8cf7c363.png"
+  fetchpriority="high"
+>
+
 <style>
 
 /* ================================
@@ -86,72 +103,19 @@ button:disabled {
 
 .hero {
   position: relative;
-  height: 300px;
+  width: 100%;
   overflow: hidden;
 
-  background: linear-gradient(
-    135deg,
-    #654026,
-    #191a25
-  );
+  background: #33251e;
 }
 
 .hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    180deg,
-    transparent 15%,
-    rgba(0,0,0,.1) 40%,
-    rgba(0,0,0,.85)
-  );
-}
-
-.hero-content {
-  position: absolute;
-  z-index: 2;
-  left: 17px;
-  right: 17px;
-  bottom: 17px;
-}
-
-.hero-title {
-  margin: 0;
-  color: white;
-
-  font-size: clamp(29px, 8vw, 44px);
-  font-weight: 1000;
-  line-height: 1.05;
-
-  text-shadow: 0 3px 6px #0008;
-}
-
-.hero-title span {
-  color: #ffdc00;
-}
-
-.hero-description {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 12px;
-
-  border-radius: 9px;
-
-  background: #ed1726;
-  color: white;
-
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1.35;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ================================
@@ -185,7 +149,9 @@ button:disabled {
 }
 
 .book-cover {
+  display: block;
   width: 100%;
+  height: auto;
   max-height: 240px;
   object-fit: contain;
 
@@ -193,6 +159,7 @@ button:disabled {
 }
 
 .book-placeholder {
+  display: none;
   min-height: 180px;
   padding: 20px 7px;
 
@@ -860,10 +827,6 @@ button:disabled {
 
 @media (max-width: 360px) {
 
-  .hero {
-    height: 265px;
-  }
-
   .about-card {
     gap: 8px;
     padding: 12px 8px;
@@ -924,7 +887,7 @@ button:disabled {
 <div class="app">
 
 <!-- ================================
-     HERO
+     HERO IMAGE
 ================================ -->
 
 <header class="hero">
@@ -932,23 +895,18 @@ button:disabled {
   <img
     id="heroImage"
     class="hero-image"
-    alt="Afya ya mwanaume"
-    style="display:none"
+
+    src="https://raw.githubusercontent.com/jjshirimatz/dadyplus-payments/main/file_00000000edc88211bf9bf02b8cf7c363.png"
+
+    alt="Tiba ya Nguvu za Kiume"
+
+    width="1536"
+    height="1024"
+
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
   >
-
-  <div class="hero-content">
-
-    <h1 class="hero-title">
-      SIRI ZA<br>
-      <span>AFYA YA KIUME</span>
-    </h1>
-
-    <div class="hero-description">
-      Pata maarifa muhimu kuhusu afya
-      ya mwanaume na jinsi ya kujitunza.
-    </div>
-
-  </div>
 
 </header>
 
@@ -965,8 +923,18 @@ button:disabled {
     <img
       id="bookImage"
       class="book-cover"
+
+      src="https://raw.githubusercontent.com/jjshirimatz/dadyplus-payments/main/file_0000000060348211ae7c3cb11db57b17.png"
+
       alt="Kitabu Tiba ya Nguvu za Kiume"
-      style="display:none"
+
+      width="1024"
+      height="1536"
+
+      loading="lazy"
+      decoding="async"
+
+      onerror="this.style.display='none';document.getElementById('bookPlaceholder').style.display='block';"
     >
 
     <div
@@ -1468,19 +1436,6 @@ button:disabled {
    CONFIGURATION
 ================================ */
 
-/*
-  Weka link za picha zako hapa.
-*/
-
-const HERO_IMAGE_URL = "";
-
-const BOOK_IMAGE_URL = "";
-
-/*
-  Abliner Netlify Function.
-  Hii ni endpoint ileile ya zamani.
-*/
-
 const PAYMENT_ENDPOINT =
   "/.netlify/functions/create-payment";
 
@@ -1506,34 +1461,6 @@ const mpesaPhone =
   document.getElementById("mpesaPhone");
 
 /* ================================
-   LOAD IMAGES
-================================ */
-
-if (HERO_IMAGE_URL) {
-
-  const img =
-    document.getElementById("heroImage");
-
-  img.src = HERO_IMAGE_URL;
-  img.style.display = "block";
-
-}
-
-if (BOOK_IMAGE_URL) {
-
-  const img =
-    document.getElementById("bookImage");
-
-  img.src = BOOK_IMAGE_URL;
-  img.style.display = "block";
-
-  document.getElementById(
-    "bookPlaceholder"
-  ).style.display = "none";
-
-}
-
-/* ================================
    NORMALIZE PHONE
 ================================ */
 
@@ -1541,10 +1468,6 @@ function normalizePhone(value) {
 
   let phone = String(value || "")
     .replace(/\D/g, "");
-
-  /*
-    +255XXXXXXXXX -> 0XXXXXXXXX
-  */
 
   if (
     phone.startsWith("255") &&
@@ -1554,11 +1477,6 @@ function normalizePhone(value) {
     phone = "0" + phone.slice(3);
 
   }
-
-  /*
-    7XXXXXXXX -> 07XXXXXXXX
-    6XXXXXXXX -> 06XXXXXXXX
-  */
 
   if (
     phone.length === 9 &&
@@ -1579,17 +1497,6 @@ function normalizePhone(value) {
 
 function validPhone(phone) {
 
-  /*
-    Inakubali:
-    06XXXXXXXX
-    07XXXXXXXX
-
-    Inajumuisha:
-    0664
-    0666
-    0620
-  */
-
   return /^0[67]\d{8}$/.test(phone);
 
 }
@@ -1599,22 +1506,6 @@ function validPhone(phone) {
 ================================ */
 
 function isMpesaPrefix(phone) {
-
-  /*
-    Kwa utaratibu ulioomba:
-
-    074
-    075
-    076
-    079
-
-    Hizi zinaonyesha malipo
-    ya M-Pesa ya moja kwa moja.
-
-    Tahadhari:
-    Prefix si uthibitisho wa
-    mtandao wa sasa wa namba.
-  */
 
   return /^07[4569]\d{7}$/.test(phone);
 
@@ -1668,11 +1559,6 @@ payButton.addEventListener(
     const phone =
       normalizePhone(phoneInput.value);
 
-    /*
-      STEP 1:
-      Hakiki namba.
-    */
-
     if (!validPhone(phone)) {
 
       showStatus(
@@ -1686,10 +1572,7 @@ payButton.addEventListener(
 
     }
 
-    /*
-      STEP 2:
-      M-Pesa manual.
-    */
+    /* M-PESA MANUAL */
 
     if (isMpesaPrefix(phone)) {
 
@@ -1711,28 +1594,12 @@ payButton.addEventListener(
     }
 
     /*
-      STEP 3:
-      Namba nyingine zote halali
-      zinatumwa kwa Abliner.
+      ABLINER
 
-      Hakuna detectNetwork().
+      Hakuna kuzuia prefix za Airtel,
+      Mixx au HaloPesa.
 
-      Hakuna unknown network
-      rejection kwenye frontend.
-
-      0664 -> Abliner
-      0666 -> Abliner
-      0620 -> Abliner
-      068  -> Abliner
-      069  -> Abliner
-      078  -> Abliner
-      065  -> Abliner
-      067  -> Abliner
-      071  -> Abliner
-      077  -> Abliner
-
-      Backend ndiyo itakayopokea
-      na kuanzisha ombi la malipo.
+      0664 na 0666 zinakubaliwa.
     */
 
     mpesaPanel.classList.remove("show");
@@ -1746,11 +1613,8 @@ payButton.addEventListener(
     try {
 
       const response = await fetch(
-
         PAYMENT_ENDPOINT,
-
         {
-
           method: "POST",
 
           headers: {
@@ -1761,9 +1625,7 @@ payButton.addEventListener(
             phone: phone,
             amount: AMOUNT
           })
-
         }
-
       );
 
       let data = {};
@@ -1777,14 +1639,6 @@ payButton.addEventListener(
         data = {};
 
       }
-
-      /*
-        Hapa tunakagua kama
-        request imekubaliwa.
-
-        Haimaanishi malipo
-        yamekamilika.
-      */
 
       if (
         !response.ok ||
@@ -2109,4 +1963,4 @@ document
 </script>
 
 </body>
-</html>
+    </html>
