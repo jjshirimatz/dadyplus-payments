@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="sw">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#083681">
 
-<title>Tiba ya Nguvu za Kiume | Kitabu</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#07377f">
+
+<meta
+  name="description"
+  content="Pata kitabu cha elimu kuhusu afya ya mwanaume kwa TSh 4,000."
+>
+
+<title>Tiba ya Nguvu za Kiume</title>
 
 <style>
+
+/* ==========================================
+   GENERAL SETTINGS
+========================================== */
+
 :root {
-  --navy: #062b70;
-  --blue: #06449d;
-  --sky: #12a8ff;
+  --blue-dark: #06275f;
+  --blue: #0753b7;
+  --blue-light: #17aaff;
+  --background: #e5f3ff;
   --green: #00c83b;
-  --yellow: #ffda00;
-  --text: #10224a;
-  --bg: #e5f3ff;
+  --yellow: #ffdc00;
+  --text: #10234d;
 }
 
 * {
@@ -30,48 +46,64 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background: #e1effc;
+  color: var(--text);
 }
 
 button,
 input,
-textarea {
-  font: inherit;
+textarea,
+select {
+  font-family: inherit;
 }
 
 button {
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+  opacity: .65;
+  cursor: not-allowed;
 }
 
 .app {
   width: 100%;
   max-width: 520px;
-  margin: auto;
+  min-height: 100vh;
+  margin: 0 auto;
   overflow: hidden;
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #e6f5ff 55%,
-    #d7ecff 100%
+    #e8f5ff 45%,
+    #d9edff 100%
   );
 }
 
-/* HERO */
+/* ==========================================
+   HERO
+========================================== */
 
 .hero {
   position: relative;
-  height: 285px;
+  height: 300px;
   overflow: hidden;
-  background:
-    linear-gradient(135deg, #754d31, #211a20);
+
+  background: linear-gradient(
+    135deg,
+    #654026,
+    #191a25
+  );
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -79,114 +111,154 @@ button {
   content: "";
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     180deg,
-    transparent 20%,
-    rgba(0,0,0,.22) 45%,
-    rgba(0,0,0,.9) 100%
+    rgba(0,0,0,0) 15%,
+    rgba(0,0,0,.10) 40%,
+    rgba(0,0,0,.85) 100%
   );
 }
 
 .hero-content {
   position: absolute;
   z-index: 2;
+  bottom: 17px;
   left: 17px;
   right: 17px;
-  bottom: 15px;
 }
 
 .hero-title {
   margin: 0;
+
   color: white;
-  font-size: clamp(30px, 8vw, 45px);
+  font-size: clamp(29px, 8vw, 44px);
   font-weight: 1000;
-  line-height: 1.02;
-  text-shadow: 0 3px 5px rgba(0,0,0,.5);
+  line-height: 1.05;
+
+  text-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
 
 .hero-title span {
-  color: #ffdf00;
+  color: #ffdc00;
 }
 
-.hero-subtitle {
+.hero-description {
   display: inline-block;
+
   margin-top: 12px;
-  background: #f71923;
+  padding: 10px 12px;
+
+  background: #ed1726;
   color: white;
+
   font-size: 14px;
   font-weight: 800;
   line-height: 1.35;
-  padding: 10px 12px;
+
   border-radius: 9px;
 }
 
-/* CONTENT */
+/* ==========================================
+   CONTENT
+========================================== */
 
 .content {
   padding: 11px;
 }
 
-.about {
+/* ==========================================
+   ABOUT BOOK
+========================================== */
+
+.about-card {
   display: grid;
-  grid-template-columns: 37% 1fr;
-  gap: 12px;
+  grid-template-columns: 37% minmax(0,1fr);
   align-items: center;
-  background: linear-gradient(135deg, #fff, #edf6ff);
-  border-radius: 17px;
+
+  gap: 12px;
   padding: 15px 11px;
+
+  border-radius: 17px;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #edf6ff
+  );
+
   box-shadow: 0 3px 15px rgba(4,57,119,.06);
 }
 
 .book-cover {
   width: 100%;
-  min-height: 175px;
+  max-height: 240px;
   object-fit: contain;
-  filter: drop-shadow(5px 8px 5px rgba(0,0,0,.2));
+
+  filter: drop-shadow(
+    5px 8px 5px rgba(0,0,0,.2)
+  );
 }
 
-.book-fallback {
-  background: linear-gradient(155deg, #080808 20%, #752014 65%, #e88c19);
+.book-placeholder {
+  min-height: 180px;
+  padding: 20px 7px;
+
+  background: linear-gradient(
+    160deg,
+    #080808 20%,
+    #692018 65%,
+    #e58a17
+  );
+
   color: white;
-  min-height: 170px;
-  border-radius: 4px;
-  padding: 15px 8px;
-  box-shadow: 8px 8px 10px #0003;
   text-align: center;
+
+  border-radius: 5px;
+  box-shadow: 8px 8px 10px #0003;
+
   font-size: 17px;
-  font-weight: 1000;
+  font-weight: 900;
   line-height: 1.3;
 }
 
-.book-fallback strong {
+.book-placeholder strong {
   display: block;
-  color: #ffda00;
+  color: #ffdc00;
   font-size: 27px;
 }
 
-.about h2 {
+.about-text h2 {
   margin: 0 0 9px;
+
+  color: #06245c;
   font-size: clamp(19px, 5vw, 25px);
   line-height: 1.12;
-  color: #06245c;
 }
 
-.about p {
+.about-text p {
   margin: 0;
+
+  color: #252c3c;
   font-size: 13.5px;
   line-height: 1.55;
-  color: #242b3b;
 }
 
-/* PRICE */
+/* ==========================================
+   PRICE
+========================================== */
 
 .price-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   gap: 10px;
   align-items: center;
+
   margin-top: 9px;
   padding: 14px 10px;
-  background: #fff9da;
+
+  background: #fff8d8;
   border-radius: 17px;
 }
 
@@ -196,210 +268,268 @@ button {
 
 .price-label {
   display: inline-block;
-  background: #f51e27;
-  color: #fff;
-  padding: 5px 12px;
-  border-radius: 18px;
+
+  padding: 6px 13px;
+
+  border-radius: 20px;
+
+  background: #f3212c;
+  color: white;
+
   font-size: 13px;
   font-weight: 900;
 }
 
-.price-number {
+.price-amount {
   margin-top: 7px;
-  background: #ffdb00;
-  color: #050505;
   padding: 9px 4px;
+
+  background: #ffdc00;
+  color: #080808;
+
   border-radius: 20px;
-  font-size: clamp(23px, 6.7vw, 34px);
+
+  font-size: clamp(22px, 6.6vw, 34px);
   font-weight: 1000;
   white-space: nowrap;
 }
 
 .price-benefits {
-  border-left: 1px solid #d5b96e;
-  padding-left: 11px;
   display: grid;
   gap: 10px;
+
+  padding-left: 11px;
+
+  border-left: 1px solid #d6b96e;
 }
 
 .benefit {
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  font-size: 12px;
+
   color: #111;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 .tick {
-  background: #0ab34b;
-  color: #fff;
-  font-weight: 900;
-  border-radius: 4px;
-  padding: 2px 4px;
   flex-shrink: 0;
+
+  padding: 2px 4px;
+
+  background: #0db64c;
+  color: white;
+
+  border-radius: 4px;
+  font-weight: 900;
 }
 
-/* PAYMENT */
+/* ==========================================
+   PAYMENT SECTION
+========================================== */
 
-.payment {
+.payment-card {
   margin-top: 10px;
-  border-radius: 17px;
   padding: 16px 13px 13px;
-  background: linear-gradient(145deg, #0750b4, #05265f 72%);
+
+  border-radius: 17px;
+  border: 2px solid #1687ff;
+
   color: white;
-  border: 2px solid #1885ff;
+
+  background: linear-gradient(
+    145deg,
+    #0752b6,
+    #05245c 75%
+  );
+
   box-shadow: 0 8px 19px rgba(0,59,160,.15);
 }
 
-.payment h2 {
-  font-size: 27px;
+.payment-title {
   margin: 0 0 15px;
-  line-height: 1.1;
+
+  color: white;
+  font-size: 27px;
+  font-weight: 900;
 }
+
+/* ==========================================
+   PAYMENT STEPS
+========================================== */
 
 .steps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
-  margin-bottom: 17px;
+
+  margin-bottom: 18px;
 }
 
 .step {
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  padding: 0 6px;
-  min-width: 0;
-}
 
-.step + .step {
-  border-left: 1px solid #1886e9;
+  min-width: 0;
+  padding: 0 6px;
 }
 
 .step:first-child {
   padding-left: 0;
 }
 
+.step + .step {
+  border-left: 1px solid #2185e5;
+}
+
 .step-number {
-  display: grid;
-  place-items: center;
-  background: #13aaff;
-  border-radius: 50%;
+  flex-shrink: 0;
+
   width: 29px;
   height: 29px;
-  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  background: #15aaff;
+  color: white;
+
+  border-radius: 50%;
+
   font-size: 18px;
   font-weight: 900;
 }
 
 .step-text {
+  color: white;
+
   font-size: 11px;
   line-height: 1.4;
 }
 
-.phone-wrap {
+/* ==========================================
+   PHONE INPUT
+========================================== */
+
+.phone-wrapper {
   position: relative;
 }
 
 .phone-icon {
   position: absolute;
-  left: 14px;
   top: 50%;
+  left: 14px;
+
   transform: translateY(-50%);
+
   font-size: 21px;
 }
 
 .phone-input {
   width: 100%;
-  height: 58px;
+  height: 59px;
+
   border: 0;
   outline: none;
-  border-radius: 12px;
+
   padding: 0 15px 0 47px;
+
+  border-radius: 12px;
+
+  background: white;
+  color: #152447;
+
   font-size: 16px;
-  color: #162445;
-  background: #fff;
 }
 
 .phone-input:focus {
-  box-shadow: 0 0 0 3px #69baff;
+  box-shadow: 0 0 0 3px #6ec0ff;
 }
 
-.networks {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 5px;
-  margin-top: 8px;
-}
-
-.network {
-  border: 2px solid transparent;
-  min-height: 51px;
-  border-radius: 10px;
-  color: #fff;
-  font-weight: 900;
-  font-size: 16px;
-  line-height: 1;
-  padding: 6px 2px;
-  transition: .15s;
-}
-
-.network small {
-  display: block;
-  font-size: 10px;
-  font-weight: 700;
-  margin-top: 3px;
-}
-
-.network.airtel {
-  background: #ff1719;
-}
-
-.network.mixx {
-  background: #ffdc00;
-  color: #123fc1;
-}
-
-.network.mpesa {
-  background: #05ad3c;
-}
-
-.network.selected {
-  border-color: #fff;
-  box-shadow: 0 0 0 2px #31b8ff;
-  transform: translateY(-1px);
-}
+/* ==========================================
+   PAY BUTTON
+========================================== */
 
 .pay-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
   width: 100%;
-  min-height: 69px;
-  border: 0;
-  margin-top: 9px;
+  min-height: 73px;
+
+  margin-top: 11px;
+  padding: 10px;
+
+  border: none;
   border-radius: 12px;
-  background: linear-gradient(180deg, #05e849, #00ae2c);
+
   color: white;
-  font-weight: 1000;
+
+  background: linear-gradient(
+    180deg,
+    #08e94c,
+    #00af2c
+  );
+
+  box-shadow: inset 0 -4px 0 #008e25;
+}
+
+.pay-lock {
+  font-size: 27px;
+}
+
+.pay-text {
+  text-align: center;
   font-size: 28px;
-  box-shadow: inset 0 -4px 0 #008f26;
+  font-weight: 1000;
+  line-height: 1.05;
 }
 
-.pay-button small {
+.pay-text small {
   display: block;
+
+  margin-top: 4px;
+
   font-size: 17px;
+  font-weight: 900;
 }
 
-.pay-button:disabled {
-  opacity: .65;
-  cursor: wait;
+.pay-arrow {
+  display: grid;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: white;
+  color: #00a93a;
+
+  font-size: 26px;
+  font-weight: 900;
 }
+
+/* ==========================================
+   STATUS
+========================================== */
 
 .status {
+  display: none;
+
   margin-top: 10px;
-  padding: 11px;
-  background: #ffffff18;
+  padding: 12px;
+
   border-radius: 10px;
+
+  background: rgba(255,255,255,.13);
+
+  color: white;
   font-size: 13px;
   line-height: 1.5;
-  display: none;
 }
 
 .status.show {
@@ -410,15 +540,20 @@ button {
   background: #a90024;
 }
 
-/* MPESA */
+/* ==========================================
+   M-PESA MANUAL PAYMENT
+========================================== */
 
 .mpesa-panel {
   display: none;
-  margin-top: 12px;
-  padding: 13px;
-  background: white;
-  color: #152447;
+
+  margin-top: 13px;
+  padding: 15px;
+
   border-radius: 12px;
+
+  background: white;
+  color: #14264b;
 }
 
 .mpesa-panel.show {
@@ -426,88 +561,120 @@ button {
 }
 
 .mpesa-panel h3 {
-  margin: 0 0 9px;
-  color: #084a9c;
+  margin: 0 0 10px;
+
+  color: #06499c;
+  font-size: 20px;
 }
 
 .mpesa-panel p {
   font-size: 13px;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .mpesa-recipient {
-  background: #eaf4ff;
-  padding: 12px;
+  margin: 12px 0;
+  padding: 13px;
+
   border-radius: 10px;
-  margin: 10px 0;
+
+  background: #e9f4ff;
+
   font-size: 14px;
+  line-height: 1.6;
 }
 
 .mpesa-recipient strong {
   display: block;
-  font-size: 20px;
-  color: #062c71;
-  margin: 5px 0;
+
+  margin: 4px 0;
+
+  color: #052b6d;
+  font-size: 21px;
 }
 
-.code-input {
+.mpesa-input {
   width: 100%;
   height: 49px;
+
+  padding: 11px;
+
   border: 1px solid #c4d7ef;
   border-radius: 9px;
-  padding: 10px;
+
   outline: none;
 }
 
-.submit-code {
-  margin-top: 9px;
+.mpesa-submit {
   width: 100%;
-  background: #0755bd;
+  min-height: 47px;
+
+  margin-top: 9px;
+
   border: 0;
-  color: white;
   border-radius: 9px;
-  min-height: 46px;
-  font-weight: 800;
+
+  background: #0757be;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 900;
 }
 
-/* REVIEWS */
+/* ==========================================
+   REVIEWS
+========================================== */
 
 .reviews {
-  padding: 15px 2px 22px;
+  padding: 17px 2px 22px;
 }
 
-.reviews-head {
+.reviews-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 8px;
-  margin-bottom: 12px;
+
+  margin-bottom: 13px;
 }
 
-.reviews-head h2 {
+.reviews-title {
   margin: 0;
+
   color: #08235a;
   font-size: 23px;
+  font-weight: 900;
 }
 
-.review-write {
+.write-review {
   border: 0;
   border-radius: 30px;
+
   padding: 11px 13px;
+
   background: #0869e9;
   color: white;
-  font-weight: 800;
+
   font-size: 12px;
+  font-weight: 800;
+
   white-space: nowrap;
 }
 
+/* SWIPE CAROUSEL */
+
 .review-track {
   display: flex;
-  overflow-x: auto;
   gap: 10px;
+
+  overflow-x: auto;
+
+  padding: 2px 2px 10px;
+
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 2px 2px 9px;
+
   -webkit-overflow-scrolling: touch;
 }
 
@@ -515,13 +682,17 @@ button {
   display: none;
 }
 
-.review {
-  scroll-snap-align: start;
+.review-card {
   flex: 0 0 75%;
-  min-height: 150px;
-  background: white;
-  border-radius: 14px;
+
+  min-height: 151px;
   padding: 13px;
+
+  border-radius: 14px;
+
+  background: white;
+
+  scroll-snap-align: start;
 }
 
 .review-top {
@@ -531,69 +702,99 @@ button {
 }
 
 .avatar {
+  flex-shrink: 0;
+
   width: 43px;
   height: 43px;
-  border-radius: 50%;
-  background: #dbe5f2;
+
   display: grid;
   place-items: center;
-  font-size: 26px;
-  color: #587293;
-  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #dce7f4;
+  color: #526d91;
+
+  font-size: 25px;
 }
 
 .review-name {
+  color: #111;
+
   font-size: 14px;
-  color: #171717;
+  font-weight: 800;
 }
 
 .stars {
+  margin-top: 2px;
+
   color: #ffc600;
-  font-size: 19px;
+
+  font-size: 18px;
   letter-spacing: -2px;
 }
 
-.review p {
+.review-card p {
   margin: 9px 0 0;
-  font-size: 13px;
+
   color: #222;
+
+  font-size: 13px;
   line-height: 1.45;
 }
 
-.dots {
+/* DOTS */
+
+.review-dots {
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin-top: 8px;
+
+  margin-top: 7px;
 }
 
-.dot {
+.review-dot {
   width: 8px;
   height: 8px;
+
   border-radius: 50%;
+
   background: #b9c8d8;
 }
 
-.dot.active {
+.review-dot.active {
   width: 21px;
   border-radius: 7px;
+
   background: #0874ed;
 }
 
-/* FOOTER */
+/* ==========================================
+   FOOTER
+========================================== */
 
 .footer {
-  background: linear-gradient(135deg, #07377f, #05235c);
-  color: white;
-  padding: 22px 10px;
-  border-radius: 19px 19px 0 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
   gap: 5px;
+
+  padding: 23px 10px;
+
+  border-radius: 19px 19px 0 0;
+
+  background: linear-gradient(
+    135deg,
+    #07377f,
+    #05235c
+  );
+
+  color: white;
 }
 
 .footer-item {
   text-align: center;
+
   font-size: 11px;
   line-height: 1.4;
 }
@@ -603,22 +804,31 @@ button {
 }
 
 .footer-icon {
-  font-size: 29px;
   display: block;
-  margin-bottom: 6px;
+
+  margin-bottom: 7px;
+
+  font-size: 29px;
 }
 
-/* MODAL */
+/* ==========================================
+   REVIEW MODAL
+========================================== */
 
 .modal {
   display: none;
+
   position: fixed;
   inset: 0;
-  background: #001532b8;
+
   z-index: 100;
+
   align-items: center;
   justify-content: center;
+
   padding: 18px;
+
+  background: rgba(0,21,50,.75);
 }
 
 .modal.show {
@@ -628,26 +838,37 @@ button {
 .modal-box {
   width: 100%;
   max-width: 420px;
-  background: white;
-  border-radius: 18px;
+
   padding: 21px;
+
+  border-radius: 18px;
+
+  background: white;
 }
 
 .modal-box h3 {
-  margin: 0 0 13px;
+  margin: 0 0 14px;
+
+  color: #082a66;
 }
 
 .modal-box input,
 .modal-box textarea {
   width: 100%;
+
+  margin-bottom: 10px;
+  padding: 12px;
+
   border: 1px solid #cad9ed;
   border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 10px;
+
+  outline: none;
+
+  font-size: 15px;
 }
 
 .modal-box textarea {
-  min-height: 95px;
+  min-height: 100px;
   resize: vertical;
 }
 
@@ -658,32 +879,46 @@ button {
 
 .modal-actions button {
   flex: 1;
+
+  padding: 12px;
+
   border: 0;
   border-radius: 9px;
-  padding: 12px;
-  font-weight: 800;
+
+  font-weight: 900;
 }
 
-.cancel {
+.cancel-button {
   background: #e6edf6;
+  color: #12315e;
 }
 
-.send {
+.send-button {
   background: #0870e8;
   color: white;
 }
 
+.review-status {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
 @media (max-width: 360px) {
+
   .hero {
-    height: 260px;
+    height: 265px;
   }
 
-  .about {
+  .about-card {
     gap: 8px;
     padding: 12px 8px;
   }
 
-  .about p {
+  .about-text p {
     font-size: 12px;
   }
 
@@ -696,364 +931,546 @@ button {
     font-size: 10px;
   }
 
-  .price-number {
+  .price-amount {
     font-size: 22px;
   }
 
   .benefit {
     font-size: 11px;
   }
+
+  .pay-text {
+    font-size: 25px;
+  }
+
+  .reviews-title {
+    font-size: 20px;
+  }
+
+  .write-review {
+    font-size: 11px;
+    padding: 10px;
+  }
+
 }
 
 @media (min-width: 521px) {
+
   body {
     background: #d6e6f5;
   }
 
   .app {
-    min-height: 100vh;
-    box-shadow: 0 0 35px #0002;
+    box-shadow: 0 0 35px rgba(0,0,0,.12);
   }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="app">
 
-  <header class="hero">
+<!-- =====================================
+     HERO
+===================================== -->
+
+<header class="hero">
+
+  <img
+    id="heroImage"
+    class="hero-image"
+    alt="Afya ya mwanaume"
+    style="display:none"
+  >
+
+  <div class="hero-content">
+
+    <h1 class="hero-title">
+      SIRI ZA<br>
+      <span>AFYA YA KIUME</span>
+    </h1>
+
+    <div class="hero-description">
+      Pata maarifa muhimu kuhusu
+      afya ya mwanaume na jinsi
+      ya kujitunza.
+    </div>
+
+  </div>
+
+</header>
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="content">
+
+<!-- ABOUT BOOK -->
+
+<section class="about-card">
+
+  <div>
+
     <img
-      id="heroImage"
-      class="hero-image"
-      alt="Kitabu cha afya ya mwanaume"
+      id="bookImage"
+      class="book-cover"
+      alt="Kitabu Tiba ya Nguvu za Kiume"
       style="display:none"
     >
 
-    <div class="hero-content">
-      <h1 class="hero-title">
-        SIRI ZA<br>
-        <span>AFYA YA KIUME</span>
-      </h1>
-
-      <div class="hero-subtitle">
-        Pata maarifa muhimu kuhusu afya ya
-        mwanaume na jinsi ya kujitunza.
-      </div>
+    <div
+      id="bookPlaceholder"
+      class="book-placeholder"
+    >
+      TIBA YA<br>
+      NGUVU ZA
+      <strong>KIUME</strong>
     </div>
-  </header>
 
-  <main class="content">
+  </div>
 
-    <section class="about">
-      <div>
-        <img
-          id="bookImage"
-          class="book-cover"
-          alt="Jalada la kitabu Tiba ya Nguvu za Kiume"
-          style="display:none"
-        >
+  <div class="about-text">
 
-        <div id="bookFallback" class="book-fallback">
-          TIBA YA<br>
-          NGUVU ZA
-          <strong>KIUME</strong>
-        </div>
-      </div>
+    <h2>Kuhusu Kitabu Hiki</h2>
 
-      <div>
-        <h2>Kuhusu Kitabu Hiki</h2>
-        <p>
-          Kitabu hiki kimeandaliwa ili kukupa
-          elimu muhimu kuhusu afya ya mwanaume,
-          mambo yanayoweza kuathiri nguvu za kiume
-          na njia za kujitunza. Ndani yake utapata
-          mwongozo rahisi na hatua za kuzingatia
-          kuhusu afya yako kwa ujumla.
-        </p>
-      </div>
-    </section>
+    <p>
+      Kitabu hiki kimeandaliwa ili
+      kukupa elimu muhimu kuhusu
+      afya ya mwanaume, mambo
+      yanayoweza kuathiri nguvu za
+      kiume na njia za kujitunza.
 
-    <section class="price-card">
-      <div class="price-left">
-        <div class="price-label">BEI YA KITABU</div>
-        <div class="price-number">TSh 4,000</div>
-      </div>
+      Ndani yake utapata mwongozo
+      rahisi, ushauri wa kiafya
+      na hatua za kuzingatia
+      kuhusu afya yako kwa ujumla.
+    </p>
 
-      <div class="price-benefits">
-        <div class="benefit">
-          <span class="tick">✓</span>
-          <span>Malipo ni salama</span>
-        </div>
-        <div class="benefit">
-          <span class="tick">✓</span>
-          <span>Unapata kitabu baada ya malipo kuthibitishwa</span>
-        </div>
-        <div class="benefit">
-          <span class="tick">✓</span>
-          <span>Soma kwenye simu yako</span>
-        </div>
-      </div>
-    </section>
+  </div>
 
-    <section class="payment" id="payment">
+</section>
 
-      <h2>Jinsi ya Kulipia</h2>
+<!-- =====================================
+     PRICE
+===================================== -->
 
-      <div class="steps">
-        <div class="step">
-          <span class="step-number">1</span>
-          <span class="step-text">
-            Weka namba yako ya simu hapa chini.
-          </span>
-        </div>
+<section class="price-card">
 
-        <div class="step">
-          <span class="step-number">2</span>
-          <span class="step-text">
-            Bonyeza LIPA SASA kisha utapokea
-            ujumbe wa kuthibitisha PIN yako.
-          </span>
-        </div>
+  <div class="price-left">
 
-        <div class="step">
-          <span class="step-number">3</span>
-          <span class="step-text">
-            Weka PIN yako kwenye ujumbe rasmi
-            wa mtandao kukamilisha malipo.
-          </span>
-        </div>
-      </div>
+    <div class="price-label">
+      BEI YA KITABU
+    </div>
 
-      <div class="phone-wrap">
-        <span class="phone-icon">📱</span>
+    <div class="price-amount">
+      TSh 4,000
+    </div>
 
-        <input
-          id="phone"
-          class="phone-input"
-          type="tel"
-          inputmode="tel"
-          autocomplete="tel"
-          placeholder="Ingiza namba yako ya simu"
-          maxlength="13"
-          aria-label="Namba ya simu ya kulipia"
-        >
-      </div>
+  </div>
 
-      <div class="networks">
-        <button
-          type="button"
-          class="network airtel"
-          data-network="airtel"
-        >
-          airtel
-          <small>money</small>
-        </button>
+  <div class="price-benefits">
 
-        <button
-          type="button"
-          class="network mixx"
-          data-network="mixx"
-        >
-          mixx
-          <small>by yas</small>
-        </button>
+    <div class="benefit">
+      <span class="tick">✓</span>
+      <span>Malipo ni salama</span>
+    </div>
 
-        <button
-          type="button"
-          class="network mpesa"
-          data-network="mpesa"
-        >
-          M-PESA
-        </button>
-      </div>
+    <div class="benefit">
+      <span class="tick">✓</span>
+      <span>Unapata kitabu baada ya malipo kuthibitishwa</span>
+    </div>
+
+    <div class="benefit">
+      <span class="tick">✓</span>
+      <span>Soma kwenye simu yako</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =====================================
+     PAYMENT
+===================================== -->
+
+<section class="payment-card" id="payment">
+
+  <h2 class="payment-title">
+    Jinsi ya Kulipia
+  </h2>
+
+  <!-- STEPS -->
+
+  <div class="steps">
+
+    <div class="step">
+
+      <span class="step-number">1</span>
+
+      <span class="step-text">
+        Weka namba yako ya simu
+        hapa chini.
+      </span>
+
+    </div>
+
+    <div class="step">
+
+      <span class="step-number">2</span>
+
+      <span class="step-text">
+        Bonyeza LIPA SASA,
+        kisha utapokea ujumbe
+        wa kuthibitisha PIN yako.
+      </span>
+
+    </div>
+
+    <div class="step">
+
+      <span class="step-number">3</span>
+
+      <span class="step-text">
+        Weka PIN kwenye ujumbe
+        rasmi wa mtandao
+        kukamilisha malipo.
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- PHONE -->
+
+  <div class="phone-wrapper">
+
+    <span class="phone-icon">📱</span>
+
+    <input
+      id="phone"
+      class="phone-input"
+      type="tel"
+      inputmode="tel"
+      autocomplete="tel"
+      placeholder="Ingiza namba yako ya simu"
+      maxlength="13"
+      aria-label="Namba ya simu"
+    >
+
+  </div>
+
+  <!-- PAY BUTTON -->
+
+  <button
+    id="payButton"
+    class="pay-button"
+    type="button"
+  >
+
+    <span class="pay-lock">🔒</span>
+
+    <span class="pay-text">
+      LIPA SASA
+      <small>TSh 4,000</small>
+    </span>
+
+    <span class="pay-arrow">›</span>
+
+  </button>
+
+  <div
+    id="paymentStatus"
+    class="status"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+  <!-- =====================================
+       M-PESA MANUAL PAYMENT
+  ===================================== -->
+
+  <div id="mpesaPanel" class="mpesa-panel">
+
+    <h3>Malipo ya M-Pesa</h3>
+
+    <p>
+      Kwa namba za Vodacom M-Pesa,
+      tafadhali fuata maelekezo
+      haya kukamilisha malipo.
+    </p>
+
+    <div class="mpesa-recipient">
+
+      Kiasi cha kulipia:
+
+      <strong>TSh 4,000</strong>
+
+      Tuma fedha kwenda namba:
+
+      <strong>0791935461</strong>
+
+      Jina la mpokeaji:<br>
+
+      <b>ABDALLAH MWAITA ABDALLAH</b>
+
+    </div>
+
+    <p>
+      Baada ya kutuma fedha,
+      weka namba ya uthibitisho
+      wa muamala hapa chini.
+
+      Tutahakikisha fedha zimepokelewa
+      kabla ya kukupatia kitabu.
+    </p>
+
+    <form
+      id="mpesaForm"
+      name="mpesa-payments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+
+      <input
+        type="hidden"
+        name="form-name"
+        value="mpesa-payments"
+      >
+
+      <input
+        type="hidden"
+        name="phone"
+        id="mpesaPhone"
+      >
+
+      <input
+        type="hidden"
+        name="amount"
+        value="4000"
+      >
+
+      <input
+        type="hidden"
+        name="payment_method"
+        value="mpesa-manual"
+      >
+
+      <p style="display:none">
+
+        <label>
+          Usijaze hapa
+          <input name="bot-field">
+        </label>
+
+      </p>
+
+      <input
+        id="transactionCode"
+        class="mpesa-input"
+        name="transaction_code"
+        type="text"
+        placeholder="Weka namba ya muamala"
+        minlength="5"
+        maxlength="80"
+        required
+      >
 
       <button
-        type="button"
-        class="pay-button"
-        id="payButton"
+        class="mpesa-submit"
+        type="submit"
       >
-        🔒 LIPA SASA
-        <small>TSh 4,000</small>
+        WASILISHA UTHIBITISHO
       </button>
 
-      <div id="paymentStatus" class="status" role="status"></div>
+    </form>
 
-      <div id="mpesaPanel" class="mpesa-panel">
-        <h3>Malipo ya M-Pesa</h3>
+    <div
+      id="mpesaStatus"
+      class="status"
+      role="status"
+    ></div>
 
-        <p>
-          Kwa sasa, malipo ya M-Pesa yanafanyika
-          kwa kutuma fedha moja kwa moja.
-          <strong>Hutatumiwa ombi la PIN kiotomatiki.</strong>
-        </p>
+  </div>
 
-        <div class="mpesa-recipient">
-          Tuma <strong>TSh 4,000</strong>
-          kwenda namba:
-          <strong>0791935461</strong>
-          Jina la mpokeaji:<br>
-          <b>ABDALLAH MWAITA ABDALLAH</b>
+</section>
+
+<!-- =====================================
+     REVIEWS
+===================================== -->
+
+<section class="reviews">
+
+  <div class="reviews-header">
+
+    <h2 class="reviews-title">
+      Maoni ya Wateja
+    </h2>
+
+    <button
+      id="openReview"
+      class="write-review"
+      type="button"
+    >
+      Andika Maoni Hapa ›
+    </button>
+
+  </div>
+
+  <div
+    id="reviewTrack"
+    class="review-track"
+  >
+
+    <!-- REVIEW 1 -->
+
+    <article class="review-card">
+
+      <div class="review-top">
+
+        <div class="avatar">👤</div>
+
+        <div>
+
+          <div class="review-name">
+            Peter
+          </div>
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
         </div>
 
-        <p>
-          Baada ya kutuma fedha, weka
-          namba ya uthibitisho wa muamala hapa chini.
-          Tutahakikisha malipo kabla ya kukupatia kitabu.
-        </p>
-
-        <form
-          id="mpesaForm"
-          name="mpesa-payments"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
-          <input
-            type="hidden"
-            name="form-name"
-            value="mpesa-payments"
-          >
-
-          <input
-            type="hidden"
-            name="phone"
-            id="mpesaPhone"
-          >
-
-          <input
-            type="hidden"
-            name="amount"
-            value="4000"
-          >
-
-          <input
-            type="hidden"
-            name="payment_method"
-            value="mpesa-manual"
-          >
-
-          <p style="display:none">
-            <label>
-              Usijaze hapa
-              <input name="bot-field">
-            </label>
-          </p>
-
-          <input
-            class="code-input"
-            id="transactionCode"
-            name="transaction_code"
-            placeholder="Weka namba ya muamala"
-            required
-            minlength="5"
-            maxlength="80"
-          >
-
-          <button class="submit-code" type="submit">
-            WASILISHA UTHIBITISHO
-          </button>
-        </form>
-
-        <div id="mpesaStatus" class="status" role="status"></div>
       </div>
 
-    </section>
+      <p>
+        Hapa yataonekana maoni
+        halisi ya wateja
+        baada ya kuyakagua.
+      </p>
 
-    <section class="reviews">
+    </article>
 
-      <div class="reviews-head">
-        <h2>Maoni ya Wateja</h2>
+    <!-- REVIEW 2 -->
 
-        <button
-          type="button"
-          class="review-write"
-          id="openReview"
-        >
-          Andika Maoni Hapa ›
-        </button>
-      </div>
+    <article class="review-card">
 
-      <div class="review-track" id="reviewTrack">
+      <div class="review-top">
 
-        <article class="review">
-          <div class="review-top">
-            <div class="avatar">👤</div>
-            <div>
-              <div class="review-name">Peter</div>
-              <div class="stars">★★★★★</div>
-            </div>
+        <div class="avatar">👤</div>
+
+        <div>
+
+          <div class="review-name">
+            Awadhi
           </div>
-          <p>
-            Maoni ya mfano kwa ajili ya kuonyesha
-            muonekano wa sehemu hii.
-          </p>
-        </article>
 
-        <article class="review">
-          <div class="review-top">
-            <div class="avatar">👤</div>
-            <div>
-              <div class="review-name">Awadhi</div>
-              <div class="stars">★★★★★</div>
-            </div>
+          <div class="stars">
+            ★★★★★
           </div>
-          <p>
-            Hapa yataonekana maoni halisi
-            yatakayowasilishwa na wateja.
-          </p>
-        </article>
 
-        <article class="review">
-          <div class="review-top">
-            <div class="avatar">👤</div>
-            <div>
-              <div class="review-name">Joshua</div>
-              <div class="stars">★★★★★</div>
-            </div>
-          </div>
-          <p>
-            Telezesha kushoto au kulia
-            kusoma maoni mengine.
-          </p>
-        </article>
+        </div>
 
       </div>
 
-      <div class="dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+      <p>
+        Sehemu hii inaonyesha
+        jinsi maoni ya wateja
+        yatakavyoonekana.
+      </p>
+
+    </article>
+
+    <!-- REVIEW 3 -->
+
+    <article class="review-card">
+
+      <div class="review-top">
+
+        <div class="avatar">👤</div>
+
+        <div>
+
+          <div class="review-name">
+            Joshua
+          </div>
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+        </div>
+
       </div>
 
-    </section>
+      <p>
+        Telezesha kushoto
+        au kulia kusoma
+        maoni mengine.
+      </p>
 
-  </main>
+    </article>
 
-  <footer class="footer">
+  </div>
 
-    <div class="footer-item">
-      <span class="footer-icon">🛡️</span>
-      Malipo Salama
-    </div>
+  <div class="review-dots">
 
-    <div class="footer-item">
-      <span class="footer-icon">⚡</span>
-      Kitabu Baada ya Uthibitisho
-    </div>
+    <span class="review-dot active"></span>
+    <span class="review-dot"></span>
+    <span class="review-dot"></span>
 
-    <div class="footer-item">
-      <span class="footer-icon">🎧</span>
-      Msaada kwa Wateja
-    </div>
+  </div>
 
-  </footer>
+</section>
+
+</main>
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer class="footer">
+
+  <div class="footer-item">
+
+    <span class="footer-icon">🛡️</span>
+
+    Malipo Salama
+
+  </div>
+
+  <div class="footer-item">
+
+    <span class="footer-icon">⚡</span>
+
+    Kitabu Baada ya Uthibitisho
+
+  </div>
+
+  <div class="footer-item">
+
+    <span class="footer-icon">🎧</span>
+
+    Msaada kwa Wateja
+
+  </div>
+
+</footer>
 
 </div>
 
-<!-- REVIEW MODAL -->
+<!-- =====================================
+     REVIEW MODAL
+===================================== -->
 
 <div id="reviewModal" class="modal">
+
   <div class="modal-box">
 
     <h3>Andika Maoni Yako</h3>
@@ -1073,15 +1490,18 @@ button {
       >
 
       <p style="display:none">
+
         <label>
           Usijaze hapa
           <input name="bot-field">
         </label>
+
       </p>
 
       <input
         id="reviewName"
         name="name"
+        type="text"
         placeholder="Jina lako"
         maxlength="40"
         required
@@ -1096,368 +1516,750 @@ button {
       ></textarea>
 
       <div class="modal-actions">
+
         <button
-          type="button"
-          class="cancel"
           id="closeReview"
+          class="cancel-button"
+          type="button"
         >
           GHAIRI
         </button>
 
-        <button type="submit" class="send">
+        <button
+          class="send-button"
+          type="submit"
+        >
           TUMA MAONI
         </button>
+
       </div>
 
-      <p id="reviewStatus" style="font-size:13px"></p>
+      <p
+        id="reviewStatus"
+        class="review-status"
+        role="status"
+      ></p>
 
     </form>
+
   </div>
+
 </div>
 
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
 <script>
+
 "use strict";
 
+/* ==========================================
+   CONFIGURATION
+========================================== */
+
 /*
- * PICHA:
- * Weka URL halisi za picha zako hapa.
- * Unaweza kuziweka kwenye folder la images
- * ndani ya repository yako ya Netlify.
- */
+  Weka link halisi za picha zako hapa.
+
+  Mfano:
+
+  const HERO_IMAGE_URL =
+    "images/hero.jpg";
+
+  const BOOK_IMAGE_URL =
+    "images/book.png";
+*/
+
 const HERO_IMAGE_URL = "";
+
 const BOOK_IMAGE_URL = "";
 
 /*
- * MALIPO:
- * Function hii lazima iwe tayari kwenye
- * Netlify deployment yako.
- */
+  Netlify Function ya Abliner.
+*/
+
 const PAYMENT_ENDPOINT =
   "/.netlify/functions/create-payment";
 
 const AMOUNT = 4000;
 
-const phoneInput = document.getElementById("phone");
-const payButton = document.getElementById("payButton");
-const paymentStatus = document.getElementById("paymentStatus");
-const mpesaPanel = document.getElementById("mpesaPanel");
-const mpesaPhone = document.getElementById("mpesaPhone");
+/* ==========================================
+   ELEMENTS
+========================================== */
 
-let selectedNetwork = "";
+const phoneInput =
+  document.getElementById("phone");
 
-/* LOAD IMAGES */
+const payButton =
+  document.getElementById("payButton");
+
+const paymentStatus =
+  document.getElementById("paymentStatus");
+
+const mpesaPanel =
+  document.getElementById("mpesaPanel");
+
+const mpesaPhone =
+  document.getElementById("mpesaPhone");
+
+/* ==========================================
+   LOAD IMAGES
+========================================== */
 
 if (HERO_IMAGE_URL) {
-  const img = document.getElementById("heroImage");
+
+  const img =
+    document.getElementById("heroImage");
+
   img.src = HERO_IMAGE_URL;
+
   img.style.display = "block";
+
 }
 
 if (BOOK_IMAGE_URL) {
-  const img = document.getElementById("bookImage");
+
+  const img =
+    document.getElementById("bookImage");
+
   img.src = BOOK_IMAGE_URL;
+
   img.style.display = "block";
 
-  document.getElementById("bookFallback").style.display = "none";
+  document.getElementById(
+    "bookPlaceholder"
+  ).style.display = "none";
+
 }
 
-/* PHONE NORMALIZATION */
+/* ==========================================
+   NORMALIZE PHONE
+========================================== */
 
 function normalizePhone(value) {
-  let p = String(value || "").replace(/\D/g, "");
 
-  if (p.startsWith("255") && p.length === 12) {
-    p = "0" + p.slice(3);
+  let phone = String(value || "")
+    .replace(/\D/g, "");
+
+  /*
+    Convert +255XXXXXXXXX
+    to 0XXXXXXXXX
+  */
+
+  if (
+    phone.startsWith("255") &&
+    phone.length === 12
+  ) {
+
+    phone = "0" + phone.slice(3);
+
   }
 
-  if (p.length === 9 && /^[67]/.test(p)) {
-    p = "0" + p;
+  /*
+    Convert 7XXXXXXXX
+    or 6XXXXXXXX
+  */
+
+  if (
+    phone.length === 9 &&
+    /^[67]/.test(phone)
+  ) {
+
+    phone = "0" + phone;
+
   }
 
-  return p;
+  return phone;
+
 }
+
+/* ==========================================
+   VALIDATE PHONE
+========================================== */
 
 function validPhone(phone) {
+
   return /^0[67]\d{8}$/.test(phone);
+
 }
 
-/*
- * Prefix pekee si uthibitisho wa mtandao
- * kwa sababu namba inaweza kuhamishwa.
- */
-function looksVodacom(phone) {
-  return /^07[456]\d{7}$/.test(phone);
+/* ==========================================
+   DETECT NETWORK
+========================================== */
+
+function detectNetwork(phone) {
+
+  const prefix =
+    phone.substring(0, 3);
+
+  /*
+    VODACOM M-PESA
+  */
+
+  const vodacom = [
+    "074",
+    "075",
+    "076",
+    "079"
+  ];
+
+  /*
+    HALOPESA
+
+    0620 inatambuliwa
+    kwa sababu inaanza 062.
+  */
+
+  const halopesa = [
+    "061",
+    "062"
+  ];
+
+  /*
+    AIRTEL MONEY
+  */
+
+  const airtel = [
+    "068",
+    "069",
+    "078"
+  ];
+
+  /*
+    MIXX BY YAS
+  */
+
+  const mixx = [
+    "065",
+    "067",
+    "071",
+    "077"
+  ];
+
+  if (vodacom.includes(prefix)) {
+
+    return "mpesa";
+
+  }
+
+  if (halopesa.includes(prefix)) {
+
+    return "halopesa";
+
+  }
+
+  if (airtel.includes(prefix)) {
+
+    return "airtel";
+
+  }
+
+  if (mixx.includes(prefix)) {
+
+    return "mixx";
+
+  }
+
+  return "unknown";
+
 }
+
+/* ==========================================
+   STATUS
+========================================== */
 
 function showStatus(message, error = false) {
+
   paymentStatus.textContent = message;
+
   paymentStatus.className =
-    "status show" + (error ? " error" : "");
+    "status show" +
+    (error ? " error" : "");
+
 }
 
 function clearStatus() {
+
   paymentStatus.textContent = "";
+
   paymentStatus.className = "status";
+
 }
 
-function setNetwork(network) {
-  selectedNetwork = network;
+/* ==========================================
+   PHONE INPUT
+========================================== */
 
-  document.querySelectorAll(".network").forEach(btn => {
-    btn.classList.toggle(
-      "selected",
-      btn.dataset.network === network
-    );
-  });
+phoneInput.addEventListener(
+  "input",
+  () => {
 
-  mpesaPanel.classList.remove("show");
-  clearStatus();
-}
+    clearStatus();
 
-document.querySelectorAll(".network").forEach(btn => {
-  btn.addEventListener("click", () => {
-    setNetwork(btn.dataset.network);
-  });
-});
+    mpesaPanel.classList.remove("show");
 
-phoneInput.addEventListener("input", () => {
-  const phone = normalizePhone(phoneInput.value);
-
-  if (!selectedNetwork && validPhone(phone)) {
-    if (looksVodacom(phone)) {
-      setNetwork("mpesa");
-    }
   }
-});
+);
 
-/* PAYMENT */
+/* ==========================================
+   PAYMENT PROCESS
+========================================== */
 
-payButton.addEventListener("click", async () => {
-  const phone = normalizePhone(phoneInput.value);
+payButton.addEventListener(
+  "click",
+  async () => {
 
-  if (!validPhone(phone)) {
-    showStatus(
-      "Weka namba sahihi ya simu ya Tanzania, mfano 07XXXXXXXX.",
-      true
-    );
-    phoneInput.focus();
-    return;
-  }
+    const phone =
+      normalizePhone(phoneInput.value);
 
-  if (!selectedNetwork) {
-    showStatus(
-      "Chagua mtandao unaotaka kutumia kulipia.",
-      true
-    );
-    return;
-  }
+    /* VALIDATE */
 
-  if (selectedNetwork === "mpesa") {
-    mpesaPhone.value = phone;
-    mpesaPanel.classList.add("show");
+    if (!validPhone(phone)) {
 
-    showStatus(
-      "Fuata maelekezo ya M-Pesa yaliyoonekana hapa chini."
-    );
-
-    mpesaPanel.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest"
-    });
-
-    return;
-  }
-
-  mpesaPanel.classList.remove("show");
-
-  payButton.disabled = true;
-  showStatus(
-    "Tunatuma ombi la malipo. Tafadhali subiri..."
-  );
-
-  try {
-    const response = await fetch(PAYMENT_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        phone: phone,
-        amount: AMOUNT
-      })
-    });
-
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok || data.success === false) {
-      throw new Error(
-        data.message ||
-        data.error ||
-        "Ombi la malipo halijafanikiwa."
+      showStatus(
+        "Tafadhali weka namba sahihi ya simu ya Tanzania.",
+        true
       );
+
+      phoneInput.focus();
+
+      return;
+
     }
 
+    const network =
+      detectNetwork(phone);
+
+    /* ==================================
+       M-PESA
+    ================================== */
+
+    if (network === "mpesa") {
+
+      mpesaPhone.value = phone;
+
+      mpesaPanel.classList.add("show");
+
+      showStatus(
+        "Kwa namba hii, fuata maelekezo ya M-Pesa hapa chini."
+      );
+
+      mpesaPanel.scrollIntoView({
+
+        behavior: "smooth",
+        block: "nearest"
+
+      });
+
+      return;
+
+    }
+
+    /* ==================================
+       UNKNOWN NETWORK
+    ================================== */
+
+    if (network === "unknown") {
+
+      showStatus(
+        "Hatukuweza kutambua mtandao wa namba hii. Tafadhali hakiki namba yako.",
+        true
+      );
+
+      return;
+
+    }
+
+    /* ==================================
+       ABLINER PAYMENT
+    ================================== */
+
+    mpesaPanel.classList.remove("show");
+
+    payButton.disabled = true;
+
     showStatus(
-      "Ombi la malipo limetumwa. Angalia ujumbe rasmi " +
-      "kwenye simu yako na uthibitishe PIN huko. " +
-      "Usiweke PIN kwenye website hii. " +
-      "Malipo yatathibitishwa na mfumo."
+      "Tunatuma ombi la malipo. Tafadhali subiri..."
     );
 
-  } catch (error) {
-    showStatus(
-      error.message ||
-      "Imeshindikana kuanzisha malipo. Jaribu tena.",
-      true
-    );
-  } finally {
-    payButton.disabled = false;
+    try {
+
+      const response = await fetch(
+
+        PAYMENT_ENDPOINT,
+
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "Content-Type":
+              "application/json"
+
+          },
+
+          body: JSON.stringify({
+
+            phone: phone,
+            amount: AMOUNT
+
+          })
+
+        }
+
+      );
+
+      const data = await response
+        .json()
+        .catch(() => ({}));
+
+      if (
+        !response.ok ||
+        data.success === false
+      ) {
+
+        throw new Error(
+
+          data.message ||
+          data.error ||
+          "Ombi la malipo halijafanikiwa."
+
+        );
+
+      }
+
+      showStatus(
+        "Ombi la malipo limetumwa. " +
+        "Angalia ujumbe rasmi kwenye simu yako. " +
+        "Weka PIN kwenye ujumbe wa mtandao " +
+        "ili kukamilisha malipo. " +
+        "Usiweke PIN kwenye website hii."
+      );
+
+    } catch (error) {
+
+      showStatus(
+
+        error.message ||
+        "Imeshindikana kuanzisha malipo. Jaribu tena.",
+
+        true
+
+      );
+
+    } finally {
+
+      payButton.disabled = false;
+
+    }
+
   }
-});
+);
 
-/* NETLIFY FORMS */
+/* ==========================================
+   NETLIFY FORM SUBMISSION
+========================================== */
 
 async function submitNetlifyForm(form) {
-  const data = new FormData(form);
-  const params = new URLSearchParams();
 
-  for (const [key, value] of data.entries()) {
+  const data =
+    new FormData(form);
+
+  const params =
+    new URLSearchParams();
+
+  for (
+    const [key, value]
+    of data.entries()
+  ) {
+
     params.append(key, value);
+
   }
 
-  const response = await fetch("/", {
-    method: "POST",
-    headers: {
-      "Content-Type":
-        "application/x-www-form-urlencoded"
-    },
-    body: params.toString()
-  });
+  const response = await fetch(
+
+    "/",
+
+    {
+
+      method: "POST",
+
+      headers: {
+
+        "Content-Type":
+          "application/x-www-form-urlencoded"
+
+      },
+
+      body: params.toString()
+
+    }
+
+  );
 
   if (!response.ok) {
-    throw new Error("Imeshindikana kuwasilisha taarifa.");
+
+    throw new Error(
+      "Imeshindikana kuwasilisha taarifa."
+    );
+
   }
 
   return true;
+
 }
 
-/* MPESA CONFIRMATION */
+/* ==========================================
+   M-PESA CONFIRMATION
+========================================== */
 
-document.getElementById("mpesaForm")
-  .addEventListener("submit", async event => {
-    event.preventDefault();
+document
+  .getElementById("mpesaForm")
+  .addEventListener(
+    "submit",
+    async event => {
 
-    const form = event.currentTarget;
-    const status = document.getElementById("mpesaStatus");
-    const phone = normalizePhone(phoneInput.value);
+      event.preventDefault();
 
-    if (!validPhone(phone)) {
-      status.textContent = "Weka namba sahihi ya simu.";
-      status.className = "status show error";
-      return;
-    }
+      const form =
+        event.currentTarget;
 
-    mpesaPhone.value = phone;
+      const status =
+        document.getElementById(
+          "mpesaStatus"
+        );
 
-    const button = form.querySelector(
-      'button[type="submit"]'
-    );
+      const phone =
+        normalizePhone(phoneInput.value);
 
-    button.disabled = true;
+      if (!validPhone(phone)) {
 
-    status.textContent = "Tunawasilisha taarifa...";
-    status.className = "status show";
+        status.textContent =
+          "Weka namba sahihi ya simu.";
 
-    try {
-      await submitNetlifyForm(form);
+        status.className =
+          "status show error";
+
+        return;
+
+      }
+
+      mpesaPhone.value = phone;
+
+      const button =
+        form.querySelector(
+          'button[type="submit"]'
+        );
+
+      button.disabled = true;
 
       status.textContent =
-        "Uthibitisho wako umewasilishwa. " +
-        "Tutakagua muamala kabla ya kukupatia kitabu.";
+        "Tunawasilisha taarifa...";
 
-      status.className = "status show";
+      status.className =
+        "status show";
 
-      document.getElementById("transactionCode").value = "";
+      try {
 
-    } catch (error) {
-      status.textContent = error.message;
-      status.className = "status show error";
-    } finally {
-      button.disabled = false;
+        await submitNetlifyForm(form);
+
+        status.textContent =
+          "Uthibitisho wako umewasilishwa. " +
+          "Tutakagua muamala kabla ya kukupatia kitabu.";
+
+        status.className =
+          "status show";
+
+        document.getElementById(
+          "transactionCode"
+        ).value = "";
+
+      } catch (error) {
+
+        status.textContent =
+          error.message;
+
+        status.className =
+          "status show error";
+
+      } finally {
+
+        button.disabled = false;
+
+      }
+
     }
-  });
-
-/* REVIEWS SWIPE */
-
-const reviewTrack = document.getElementById("reviewTrack");
-const dots = document.querySelectorAll(".dot");
-
-reviewTrack.addEventListener("scroll", () => {
-  const cards = reviewTrack.querySelectorAll(".review");
-
-  if (!cards.length) return;
-
-  const step = cards[0].getBoundingClientRect().width + 10;
-  const index = Math.max(
-    0,
-    Math.min(
-      dots.length - 1,
-      Math.round(reviewTrack.scrollLeft / step)
-    )
   );
 
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
-}, { passive: true });
+/* ==========================================
+   REVIEWS SWIPE
+========================================== */
 
-/* REVIEW MODAL */
+const reviewTrack =
+  document.getElementById(
+    "reviewTrack"
+  );
 
-const reviewModal = document.getElementById("reviewModal");
+const dots =
+  document.querySelectorAll(
+    ".review-dot"
+  );
 
-document.getElementById("openReview")
-  .addEventListener("click", () => {
-    reviewModal.classList.add("show");
-  });
+reviewTrack.addEventListener(
+  "scroll",
+  () => {
 
-document.getElementById("closeReview")
-  .addEventListener("click", () => {
-    reviewModal.classList.remove("show");
-  });
+    const cards =
+      reviewTrack.querySelectorAll(
+        ".review-card"
+      );
 
-reviewModal.addEventListener("click", event => {
-  if (event.target === reviewModal) {
-    reviewModal.classList.remove("show");
-  }
-});
+    if (!cards.length) return;
 
-document.getElementById("reviewForm")
-  .addEventListener("submit", async event => {
-    event.preventDefault();
+    const step =
+      cards[0]
+        .getBoundingClientRect()
+        .width + 10;
 
-    const form = event.currentTarget;
-    const status = document.getElementById("reviewStatus");
-    const button = form.querySelector(
-      'button[type="submit"]'
+    const index = Math.max(
+
+      0,
+
+      Math.min(
+
+        dots.length - 1,
+
+        Math.round(
+          reviewTrack.scrollLeft / step
+        )
+
+      )
+
     );
 
-    button.disabled = true;
-    status.textContent = "Tunatuma maoni yako...";
+    dots.forEach(
+      (dot, i) => {
 
-    try {
-      await submitNetlifyForm(form);
+        dot.classList.toggle(
+          "active",
+          i === index
+        );
+
+      }
+    );
+
+  },
+
+  { passive: true }
+);
+
+/* ==========================================
+   REVIEW MODAL
+========================================== */
+
+const reviewModal =
+  document.getElementById(
+    "reviewModal"
+  );
+
+document
+  .getElementById("openReview")
+  .addEventListener(
+    "click",
+    () => {
+
+      reviewModal.classList.add(
+        "show"
+      );
+
+    }
+  );
+
+document
+  .getElementById("closeReview")
+  .addEventListener(
+    "click",
+    () => {
+
+      reviewModal.classList.remove(
+        "show"
+      );
+
+    }
+  );
+
+reviewModal.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target === reviewModal
+    ) {
+
+      reviewModal.classList.remove(
+        "show"
+      );
+
+    }
+
+  }
+);
+
+/* ==========================================
+   REVIEW FORM
+========================================== */
+
+document
+  .getElementById("reviewForm")
+  .addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+      const form =
+        event.currentTarget;
+
+      const status =
+        document.getElementById(
+          "reviewStatus"
+        );
+
+      const button =
+        form.querySelector(
+          'button[type="submit"]'
+        );
+
+      button.disabled = true;
 
       status.textContent =
-        "Asante! Maoni yako yamewasilishwa kwa ukaguzi.";
+        "Tunatuma maoni yako...";
 
-      form.reset();
+      try {
 
-    } catch (error) {
-      status.textContent = error.message;
-    } finally {
-      button.disabled = false;
+        await submitNetlifyForm(form);
+
+        status.textContent =
+          "Asante! Maoni yako yamewasilishwa kwa ukaguzi.";
+
+        form.reset();
+
+      } catch (error) {
+
+        status.textContent =
+          error.message;
+
+      } finally {
+
+        button.disabled = false;
+
+      }
+
     }
-  });
+  );
+
 </script>
 
 </body>
