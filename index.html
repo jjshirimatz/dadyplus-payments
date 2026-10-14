@@ -18,9 +18,7 @@
 
 <title>Tiba ya Nguvu za Kiume</title>
 
-<!-- =====================================
-     IMAGE PERFORMANCE
-===================================== -->
+<!-- IMAGE PERFORMANCE -->
 
 <link
   rel="preconnect"
@@ -105,7 +103,6 @@ button:disabled {
   position: relative;
   width: 100%;
   overflow: hidden;
-
   background: #33251e;
 }
 
@@ -316,7 +313,6 @@ button:disabled {
 .steps {
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
-
   margin-bottom: 18px;
 }
 
@@ -534,31 +530,27 @@ button:disabled {
   font-size: 21px;
 }
 
-.mpesa-input {
-  width: 100%;
-  height: 49px;
-
-  padding: 11px;
-
-  border: 1px solid #c4d7ef;
-  border-radius: 9px;
-
-  outline: none;
-}
-
 .mpesa-submit {
-  width: 100%;
-  min-height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  margin-top: 9px;
+  width: 100%;
+  min-height: 49px;
+
+  margin-top: 12px;
+  padding: 12px;
 
   border: 0;
   border-radius: 9px;
 
-  background: #0757be;
+  background: #16a34a;
   color: white;
 
-  font-size: 13px;
+  text-decoration: none;
+  text-align: center;
+
+  font-size: 15px;
   font-weight: 900;
 }
 
@@ -694,6 +686,13 @@ button:disabled {
   width: 21px;
   border-radius: 7px;
   background: #0874ed;
+}
+
+.review-note {
+  margin: 7px 4px 0;
+  text-align: center;
+  color: #526782;
+  font-size: 11px;
 }
 
 /* ================================
@@ -954,8 +953,8 @@ button:disabled {
 
     <p>
       Kitabu hiki kinatoa tiba ya uhakika na kumaliza tatizo ndani ya siku 7. 
-      Kuna siri kubwa ipo ndani ya kitabu hiki ambayo itamaliza tatizo lako kabisa 
-      na utakua imara zaidi kwenye kusimamisha uume na kumudu tendo la ndoa ndani ya siku 7 tu!
+Kuna siri kubwa ipo ndani ya kitabu hiki ambayo itamaliza tatizo lako kabisa 
+na utakua imara zaidi kwenye kusimamisha uume na kumudu tendo la ndoa ndani ya siku 7 tu!
     </p>
 
   </div>
@@ -984,13 +983,13 @@ button:disabled {
 
     <div class="benefit">
       <span class="tick">✓</span>
-      <span>Lipa Tsh 4,000</span>
+      <span>Lipa TSh 4,000</span>
     </div>
 
     <div class="benefit">
       <span class="tick">✓</span>
       <span>
-        Uta download Kitabu baada ya malipo yako
+        Utapokea kitabu baada ya malipo kuthibitishwa
       </span>
     </div>
 
@@ -1041,8 +1040,7 @@ button:disabled {
       <span class="step-number">3</span>
 
       <span class="step-text">
-        Weka PIN kwenye ujumbe rasmi
-        wa mtandao kukamilisha malipo.
+        Angalia simu yako na Weka PIN kwenye kukamilisha malipo.
       </span>
 
     </div>
@@ -1125,78 +1123,30 @@ button:disabled {
     </div>
 
     <p>
-      Baada ya kutuma fedha,
-      weka namba ya uthibitisho
-      wa muamala hapa chini.
-
-      Tutahakikisha fedha zimepokelewa
-      kabla ya kukupatia kitabu.
+      Ukishatuma pesa kwa M-Pesa,
+      tuma ujumbe wa muamala wako
+      kwenye WhatsApp yetu:
     </p>
 
-    <form
-      id="mpesaForm"
-      name="mpesa-payments"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
+    <div class="mpesa-recipient">
+
+      Namba ya WhatsApp:
+
+      <strong>0667777656</strong>
+
+      Baada ya kuthibitisha malipo yako,
+      tutakutumia kitabu kupitia WhatsApp.
+
+    </div>
+
+    <a
+      href="https://wa.me/255667777656?text=Habari%2C%20nimelipia%20TSh%204%2C000%20kwa%20M-Pesa.%20Naomba%20uthibitishe%20malipo%20yangu%20ili%20nipate%20kitabu."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mpesa-submit"
     >
-
-      <input
-        type="hidden"
-        name="form-name"
-        value="mpesa-payments"
-      >
-
-      <input
-        type="hidden"
-        name="phone"
-        id="mpesaPhone"
-      >
-
-      <input
-        type="hidden"
-        name="amount"
-        value="4000"
-      >
-
-      <input
-        type="hidden"
-        name="payment_method"
-        value="mpesa-manual"
-      >
-
-      <p style="display:none">
-        <label>
-          Usijaze hapa
-          <input name="bot-field">
-        </label>
-      </p>
-
-      <input
-        id="transactionCode"
-        class="mpesa-input"
-        name="transaction_code"
-        type="text"
-        placeholder="Weka namba ya muamala"
-        minlength="5"
-        maxlength="80"
-        required
-      >
-
-      <button
-        class="mpesa-submit"
-        type="submit"
-      >
-        WASILISHA UTHIBITISHO
-      </button>
-
-    </form>
-
-    <div
-      id="mpesaStatus"
-      class="status"
-      role="status"
-    ></div>
+      💬 TUMA UJUMBE WHATSAPP
+    </a>
 
   </div>
 
@@ -1245,8 +1195,7 @@ button:disabled {
       </div>
 
       <p>
-        Hapa yataonekana maoni halisi
-        ya wateja baada ya kuyakagua.
+        Mungu akuweke shehe nimepona kabisa tatizo dah 😥 namba yangu ya whatsap ni hii hapa 0666505604
       </p>
 
     </article>
@@ -1260,16 +1209,14 @@ button:disabled {
         <div class="avatar">👤</div>
 
         <div>
-          <div class="review-name">Awadhi</div>
+          <div class="review-name">Hassan</div>
           <div class="stars">★★★★★</div>
         </div>
 
       </div>
 
       <p>
-        Sehemu hii inaonyesha
-        jinsi maoni ya wateja
-        yatakavyoonekana.
+        Nakuahidi kukutafutia wateja ustadhi, tiba zako za uakika sana aisee🙏🙏🙏
       </p>
 
     </article>
@@ -1283,15 +1230,14 @@ button:disabled {
         <div class="avatar">👤</div>
 
         <div>
-          <div class="review-name">Joshua</div>
+          <div class="review-name">Abiud</div>
           <div class="stars">★★★★★</div>
         </div>
 
       </div>
 
       <p>
-        Telezesha kushoto au kulia
-        kusoma maoni mengine.
+        Maoni
       </p>
 
     </article>
@@ -1303,6 +1249,10 @@ button:disabled {
     <span class="review-dot"></span>
     <span class="review-dot"></span>
   </div>
+
+  <p class="review-note">
+    Mungu akuweke shehe nimepona kabisa tatizo dah 😥 namba yangu ya whatsap ni hii hapa 0666505604
+  </p>
 
 </section>
 
@@ -1451,9 +1401,6 @@ const paymentStatus =
 const mpesaPanel =
   document.getElementById("mpesaPanel");
 
-const mpesaPhone =
-  document.getElementById("mpesaPhone");
-
 /* ================================
    NORMALIZE PHONE
 ================================ */
@@ -1570,8 +1517,6 @@ payButton.addEventListener(
 
     if (isMpesaPrefix(phone)) {
 
-      mpesaPhone.value = phone;
-
       mpesaPanel.classList.add("show");
 
       showStatus(
@@ -1650,11 +1595,11 @@ payButton.addEventListener(
 
       showStatus(
         "Ombi la malipo limepokelewa. " +
-        "Angalia ujumbe rasmi kwenye simu yako. " +
-        "Ikiwa umeupokea, weka PIN yako " +
-        "kwenye ujumbe wa mtandao " +
-        "kukamilisha malipo. " +
-        "Usiweke PIN kwenye website hii."
+        "Angalia ujumbe kwenye simu yako. " +
+        "Weka PIN yako " +
+        "Namba ya siri " +
+        "Ili kukamilisha malipo. " +
+        "Thibitisha malipo kwenye simu yako."
       );
 
     } catch (error) {
@@ -1720,88 +1665,6 @@ async function submitNetlifyForm(form) {
   return true;
 
 }
-
-/* ================================
-   M-PESA CONFIRMATION
-================================ */
-
-document
-  .getElementById("mpesaForm")
-  .addEventListener(
-    "submit",
-    async event => {
-
-      event.preventDefault();
-
-      const form =
-        event.currentTarget;
-
-      const status =
-        document.getElementById(
-          "mpesaStatus"
-        );
-
-      const phone =
-        normalizePhone(phoneInput.value);
-
-      if (!validPhone(phone)) {
-
-        status.textContent =
-          "Weka namba sahihi ya simu.";
-
-        status.className =
-          "status show error";
-
-        return;
-
-      }
-
-      mpesaPhone.value = phone;
-
-      const button =
-        form.querySelector(
-          'button[type="submit"]'
-        );
-
-      button.disabled = true;
-
-      status.textContent =
-        "Tunawasilisha taarifa...";
-
-      status.className =
-        "status show";
-
-      try {
-
-        await submitNetlifyForm(form);
-
-        status.textContent =
-          "Uthibitisho wako umewasilishwa. " +
-          "Tutakagua muamala kabla ya kukupatia kitabu.";
-
-        status.className =
-          "status show";
-
-        document.getElementById(
-          "transactionCode"
-        ).value = "";
-
-      } catch (error) {
-
-        status.textContent =
-          error.message;
-
-        status.className =
-          "status show error";
-
-      } finally {
-
-        button.disabled = false;
-
-      }
-
-    }
-  );
 
 /* ================================
    REVIEWS SWIPE
@@ -1957,4 +1820,4 @@ document
 </script>
 
 </body>
-    </html>
+      </html>
