@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="sw">
-
 <head>
 
 <meta charset="UTF-8">
@@ -21,15 +20,14 @@
 
 <style>
 
-/* ==========================================
-   GENERAL SETTINGS
-========================================== */
+/* ================================
+   GLOBAL
+================================ */
 
 :root {
-  --blue-dark: #06275f;
+  --navy: #06275f;
   --blue: #0753b7;
-  --blue-light: #17aaff;
-  --background: #e5f3ff;
+  --lightblue: #17aaff;
   --green: #00c83b;
   --yellow: #ffdc00;
   --text: #10234d;
@@ -46,7 +44,6 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: #e1effc;
   color: var(--text);
@@ -54,8 +51,7 @@ body {
 
 button,
 input,
-textarea,
-select {
+textarea {
   font-family: inherit;
 }
 
@@ -73,19 +69,20 @@ button:disabled {
   width: 100%;
   max-width: 520px;
   min-height: 100vh;
-  margin: 0 auto;
+  margin: auto;
   overflow: hidden;
+
   background: linear-gradient(
     180deg,
-    #ffffff 0%,
+    #ffffff,
     #e8f5ff 45%,
-    #d9edff 100%
+    #d9edff
   );
 }
 
-/* ==========================================
+/* ================================
    HERO
-========================================== */
+================================ */
 
 .hero {
   position: relative;
@@ -103,7 +100,6 @@ button:disabled {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
   display: block;
 }
 
@@ -114,29 +110,29 @@ button:disabled {
 
   background: linear-gradient(
     180deg,
-    rgba(0,0,0,0) 15%,
-    rgba(0,0,0,.10) 40%,
-    rgba(0,0,0,.85) 100%
+    transparent 15%,
+    rgba(0,0,0,.1) 40%,
+    rgba(0,0,0,.85)
   );
 }
 
 .hero-content {
   position: absolute;
   z-index: 2;
-  bottom: 17px;
   left: 17px;
   right: 17px;
+  bottom: 17px;
 }
 
 .hero-title {
   margin: 0;
-
   color: white;
+
   font-size: clamp(29px, 8vw, 44px);
   font-weight: 1000;
   line-height: 1.05;
 
-  text-shadow: 0 3px 6px rgba(0,0,0,.5);
+  text-shadow: 0 3px 6px #0008;
 }
 
 .hero-title span {
@@ -145,9 +141,10 @@ button:disabled {
 
 .hero-description {
   display: inline-block;
-
   margin-top: 12px;
   padding: 10px 12px;
+
+  border-radius: 9px;
 
   background: #ed1726;
   color: white;
@@ -155,39 +152,36 @@ button:disabled {
   font-size: 14px;
   font-weight: 800;
   line-height: 1.35;
-
-  border-radius: 9px;
 }
 
-/* ==========================================
+/* ================================
    CONTENT
-========================================== */
+================================ */
 
 .content {
   padding: 11px;
 }
 
-/* ==========================================
-   ABOUT BOOK
-========================================== */
+/* ================================
+   ABOUT
+================================ */
 
 .about-card {
   display: grid;
   grid-template-columns: 37% minmax(0,1fr);
   align-items: center;
-
   gap: 12px;
-  padding: 15px 11px;
 
+  padding: 15px 11px;
   border-radius: 17px;
 
   background: linear-gradient(
     135deg,
-    #ffffff,
+    white,
     #edf6ff
   );
 
-  box-shadow: 0 3px 15px rgba(4,57,119,.06);
+  box-shadow: 0 3px 15px #04397710;
 }
 
 .book-cover {
@@ -195,14 +189,14 @@ button:disabled {
   max-height: 240px;
   object-fit: contain;
 
-  filter: drop-shadow(
-    5px 8px 5px rgba(0,0,0,.2)
-  );
+  filter: drop-shadow(5px 8px 5px #0003);
 }
 
 .book-placeholder {
   min-height: 180px;
   padding: 20px 7px;
+
+  border-radius: 5px;
 
   background: linear-gradient(
     160deg,
@@ -214,12 +208,11 @@ button:disabled {
   color: white;
   text-align: center;
 
-  border-radius: 5px;
-  box-shadow: 8px 8px 10px #0003;
-
   font-size: 17px;
   font-weight: 900;
   line-height: 1.3;
+
+  box-shadow: 8px 8px 10px #0003;
 }
 
 .book-placeholder strong {
@@ -230,36 +223,35 @@ button:disabled {
 
 .about-text h2 {
   margin: 0 0 9px;
-
   color: #06245c;
+
   font-size: clamp(19px, 5vw, 25px);
   line-height: 1.12;
 }
 
 .about-text p {
   margin: 0;
-
   color: #252c3c;
+
   font-size: 13.5px;
   line-height: 1.55;
 }
 
-/* ==========================================
+/* ================================
    PRICE
-========================================== */
+================================ */
 
 .price-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  gap: 10px;
   align-items: center;
+  gap: 10px;
 
   margin-top: 9px;
   padding: 14px 10px;
 
-  background: #fff8d8;
   border-radius: 17px;
+  background: #fff8d8;
 }
 
 .price-left {
@@ -268,7 +260,6 @@ button:disabled {
 
 .price-label {
   display: inline-block;
-
   padding: 6px 13px;
 
   border-radius: 20px;
@@ -284,10 +275,10 @@ button:disabled {
   margin-top: 7px;
   padding: 9px 4px;
 
+  border-radius: 20px;
+
   background: #ffdc00;
   color: #080808;
-
-  border-radius: 20px;
 
   font-size: clamp(22px, 6.6vw, 34px);
   font-weight: 1000;
@@ -299,7 +290,6 @@ button:disabled {
   gap: 10px;
 
   padding-left: 11px;
-
   border-left: 1px solid #d6b96e;
 }
 
@@ -315,28 +305,25 @@ button:disabled {
 
 .tick {
   flex-shrink: 0;
-
   padding: 2px 4px;
+
+  border-radius: 4px;
 
   background: #0db64c;
   color: white;
-
-  border-radius: 4px;
   font-weight: 900;
 }
 
-/* ==========================================
-   PAYMENT SECTION
-========================================== */
+/* ================================
+   PAYMENT
+================================ */
 
 .payment-card {
   margin-top: 10px;
   padding: 16px 13px 13px;
 
-  border-radius: 17px;
   border: 2px solid #1687ff;
-
-  color: white;
+  border-radius: 17px;
 
   background: linear-gradient(
     145deg,
@@ -344,24 +331,24 @@ button:disabled {
     #05245c 75%
   );
 
-  box-shadow: 0 8px 19px rgba(0,59,160,.15);
+  color: white;
+
+  box-shadow: 0 8px 19px #003ba026;
 }
 
 .payment-title {
   margin: 0 0 15px;
-
   color: white;
+
   font-size: 27px;
   font-weight: 900;
 }
 
-/* ==========================================
-   PAYMENT STEPS
-========================================== */
+/* STEPS */
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
 
   margin-bottom: 18px;
 }
@@ -392,10 +379,10 @@ button:disabled {
   display: grid;
   place-items: center;
 
+  border-radius: 50%;
+
   background: #15aaff;
   color: white;
-
-  border-radius: 50%;
 
   font-size: 18px;
   font-weight: 900;
@@ -403,14 +390,11 @@ button:disabled {
 
 .step-text {
   color: white;
-
   font-size: 11px;
   line-height: 1.4;
 }
 
-/* ==========================================
-   PHONE INPUT
-========================================== */
+/* PHONE */
 
 .phone-wrapper {
   position: relative;
@@ -422,7 +406,6 @@ button:disabled {
   left: 14px;
 
   transform: translateY(-50%);
-
   font-size: 21px;
 }
 
@@ -434,7 +417,6 @@ button:disabled {
   outline: none;
 
   padding: 0 15px 0 47px;
-
   border-radius: 12px;
 
   background: white;
@@ -447,9 +429,7 @@ button:disabled {
   box-shadow: 0 0 0 3px #6ec0ff;
 }
 
-/* ==========================================
-   PAY BUTTON
-========================================== */
+/* PAY BUTTON */
 
 .pay-button {
   display: flex;
@@ -466,14 +446,13 @@ button:disabled {
   border: none;
   border-radius: 12px;
 
-  color: white;
-
   background: linear-gradient(
     180deg,
     #08e94c,
     #00af2c
   );
 
+  color: white;
   box-shadow: inset 0 -4px 0 #008e25;
 }
 
@@ -490,7 +469,6 @@ button:disabled {
 
 .pay-text small {
   display: block;
-
   margin-top: 4px;
 
   font-size: 17px;
@@ -513,9 +491,7 @@ button:disabled {
   font-weight: 900;
 }
 
-/* ==========================================
-   STATUS
-========================================== */
+/* STATUS */
 
 .status {
   display: none;
@@ -525,11 +501,12 @@ button:disabled {
 
   border-radius: 10px;
 
-  background: rgba(255,255,255,.13);
-
+  background: #ffffff22;
   color: white;
+
   font-size: 13px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .status.show {
@@ -540,9 +517,9 @@ button:disabled {
   background: #a90024;
 }
 
-/* ==========================================
-   M-PESA MANUAL PAYMENT
-========================================== */
+/* ================================
+   M-PESA
+================================ */
 
 .mpesa-panel {
   display: none;
@@ -562,7 +539,6 @@ button:disabled {
 
 .mpesa-panel h3 {
   margin: 0 0 10px;
-
   color: #06499c;
   font-size: 20px;
 }
@@ -577,7 +553,6 @@ button:disabled {
   padding: 13px;
 
   border-radius: 10px;
-
   background: #e9f4ff;
 
   font-size: 14px;
@@ -586,7 +561,6 @@ button:disabled {
 
 .mpesa-recipient strong {
   display: block;
-
   margin: 4px 0;
 
   color: #052b6d;
@@ -621,9 +595,9 @@ button:disabled {
   font-weight: 900;
 }
 
-/* ==========================================
+/* ================================
    REVIEWS
-========================================== */
+================================ */
 
 .reviews {
   padding: 17px 2px 22px;
@@ -633,7 +607,6 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 8px;
 
   margin-bottom: 13px;
@@ -648,28 +621,24 @@ button:disabled {
 }
 
 .write-review {
+  padding: 11px 13px;
+
   border: 0;
   border-radius: 30px;
-
-  padding: 11px 13px;
 
   background: #0869e9;
   color: white;
 
   font-size: 12px;
   font-weight: 800;
-
   white-space: nowrap;
 }
-
-/* SWIPE CAROUSEL */
 
 .review-track {
   display: flex;
   gap: 10px;
 
   overflow-x: auto;
-
   padding: 2px 2px 10px;
 
   scroll-snap-type: x mandatory;
@@ -684,14 +653,12 @@ button:disabled {
 
 .review-card {
   flex: 0 0 75%;
-
   min-height: 151px;
-  padding: 13px;
 
+  padding: 13px;
   border-radius: 14px;
 
   background: white;
-
   scroll-snap-align: start;
 }
 
@@ -720,14 +687,12 @@ button:disabled {
 
 .review-name {
   color: #111;
-
   font-size: 14px;
   font-weight: 800;
 }
 
 .stars {
   margin-top: 2px;
-
   color: #ffc600;
 
   font-size: 18px;
@@ -736,14 +701,11 @@ button:disabled {
 
 .review-card p {
   margin: 9px 0 0;
-
   color: #222;
 
   font-size: 13px;
   line-height: 1.45;
 }
-
-/* DOTS */
 
 .review-dots {
   display: flex;
@@ -758,25 +720,22 @@ button:disabled {
   height: 8px;
 
   border-radius: 50%;
-
   background: #b9c8d8;
 }
 
 .review-dot.active {
   width: 21px;
   border-radius: 7px;
-
   background: #0874ed;
 }
 
-/* ==========================================
+/* ================================
    FOOTER
-========================================== */
+================================ */
 
 .footer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
+  grid-template-columns: repeat(3,1fr);
   gap: 5px;
 
   padding: 23px 10px;
@@ -794,7 +753,6 @@ button:disabled {
 
 .footer-item {
   text-align: center;
-
   font-size: 11px;
   line-height: 1.4;
 }
@@ -805,30 +763,26 @@ button:disabled {
 
 .footer-icon {
   display: block;
-
   margin-bottom: 7px;
-
   font-size: 29px;
 }
 
-/* ==========================================
+/* ================================
    REVIEW MODAL
-========================================== */
+================================ */
 
 .modal {
   display: none;
 
   position: fixed;
   inset: 0;
-
   z-index: 100;
 
   align-items: center;
   justify-content: center;
 
   padding: 18px;
-
-  background: rgba(0,21,50,.75);
+  background: #001532bf;
 }
 
 .modal.show {
@@ -840,7 +794,6 @@ button:disabled {
   max-width: 420px;
 
   padding: 21px;
-
   border-radius: 18px;
 
   background: white;
@@ -848,7 +801,6 @@ button:disabled {
 
 .modal-box h3 {
   margin: 0 0 14px;
-
   color: #082a66;
 }
 
@@ -863,7 +815,6 @@ button:disabled {
   border-radius: 10px;
 
   outline: none;
-
   font-size: 15px;
 }
 
@@ -903,9 +854,9 @@ button:disabled {
   line-height: 1.5;
 }
 
-/* ==========================================
+/* ================================
    RESPONSIVE
-========================================== */
+================================ */
 
 @media (max-width: 360px) {
 
@@ -951,7 +902,6 @@ button:disabled {
     font-size: 11px;
     padding: 10px;
   }
-
 }
 
 @media (min-width: 521px) {
@@ -961,9 +911,8 @@ button:disabled {
   }
 
   .app {
-    box-shadow: 0 0 35px rgba(0,0,0,.12);
+    box-shadow: 0 0 35px #0002;
   }
-
 }
 
 </style>
@@ -974,9 +923,9 @@ button:disabled {
 
 <div class="app">
 
-<!-- =====================================
+<!-- ================================
      HERO
-===================================== -->
+================================ -->
 
 <header class="hero">
 
@@ -995,22 +944,19 @@ button:disabled {
     </h1>
 
     <div class="hero-description">
-      Pata maarifa muhimu kuhusu
-      afya ya mwanaume na jinsi
-      ya kujitunza.
+      Pata maarifa muhimu kuhusu afya
+      ya mwanaume na jinsi ya kujitunza.
     </div>
 
   </div>
 
 </header>
 
-<!-- =====================================
-     MAIN CONTENT
-===================================== -->
-
 <main class="content">
 
-<!-- ABOUT BOOK -->
+<!-- ================================
+     ABOUT BOOK
+================================ -->
 
 <section class="about-card">
 
@@ -1046,8 +992,7 @@ button:disabled {
       kiume na njia za kujitunza.
 
       Ndani yake utapata mwongozo
-      rahisi, ushauri wa kiafya
-      na hatua za kuzingatia
+      rahisi na hatua za kuzingatia
       kuhusu afya yako kwa ujumla.
     </p>
 
@@ -1055,9 +1000,9 @@ button:disabled {
 
 </section>
 
-<!-- =====================================
+<!-- ================================
      PRICE
-===================================== -->
+================================ -->
 
 <section class="price-card">
 
@@ -1077,12 +1022,14 @@ button:disabled {
 
     <div class="benefit">
       <span class="tick">✓</span>
-      <span>Malipo ni salama</span>
+      <span>Malipo kupitia simu</span>
     </div>
 
     <div class="benefit">
       <span class="tick">✓</span>
-      <span>Unapata kitabu baada ya malipo kuthibitishwa</span>
+      <span>
+        Kitabu baada ya malipo kuthibitishwa
+      </span>
     </div>
 
     <div class="benefit">
@@ -1094,17 +1041,15 @@ button:disabled {
 
 </section>
 
-<!-- =====================================
+<!-- ================================
      PAYMENT
-===================================== -->
+================================ -->
 
 <section class="payment-card" id="payment">
 
   <h2 class="payment-title">
     Jinsi ya Kulipia
   </h2>
-
-  <!-- STEPS -->
 
   <div class="steps">
 
@@ -1113,8 +1058,7 @@ button:disabled {
       <span class="step-number">1</span>
 
       <span class="step-text">
-        Weka namba yako ya simu
-        hapa chini.
+        Weka namba yako ya simu hapa chini.
       </span>
 
     </div>
@@ -1125,8 +1069,7 @@ button:disabled {
 
       <span class="step-text">
         Bonyeza LIPA SASA,
-        kisha utapokea ujumbe
-        wa kuthibitisha PIN yako.
+        kisha utapokea ujumbe wa malipo.
       </span>
 
     </div>
@@ -1136,16 +1079,15 @@ button:disabled {
       <span class="step-number">3</span>
 
       <span class="step-text">
-        Weka PIN kwenye ujumbe
-        rasmi wa mtandao
-        kukamilisha malipo.
+        Weka PIN kwenye ujumbe rasmi
+        wa mtandao kukamilisha malipo.
       </span>
 
     </div>
 
   </div>
 
-  <!-- PHONE -->
+  <!-- PHONE INPUT -->
 
   <div class="phone-wrapper">
 
@@ -1159,7 +1101,7 @@ button:disabled {
       autocomplete="tel"
       placeholder="Ingiza namba yako ya simu"
       maxlength="13"
-      aria-label="Namba ya simu"
+      aria-label="Namba ya simu ya kulipia"
     >
 
   </div>
@@ -1190,9 +1132,9 @@ button:disabled {
     aria-live="polite"
   ></div>
 
-  <!-- =====================================
-       M-PESA MANUAL PAYMENT
-  ===================================== -->
+  <!-- ================================
+       M-PESA MANUAL
+  ================================ -->
 
   <div id="mpesaPanel" class="mpesa-panel">
 
@@ -1201,7 +1143,7 @@ button:disabled {
     <p>
       Kwa namba za Vodacom M-Pesa,
       tafadhali fuata maelekezo
-      haya kukamilisha malipo.
+      yafuatayo.
     </p>
 
     <div class="mpesa-recipient">
@@ -1262,12 +1204,10 @@ button:disabled {
       >
 
       <p style="display:none">
-
         <label>
           Usijaze hapa
           <input name="bot-field">
         </label>
-
       </p>
 
       <input
@@ -1300,9 +1240,9 @@ button:disabled {
 
 </section>
 
-<!-- =====================================
+<!-- ================================
      REVIEWS
-===================================== -->
+================================ -->
 
 <section class="reviews">
 
@@ -1336,23 +1276,15 @@ button:disabled {
         <div class="avatar">👤</div>
 
         <div>
-
-          <div class="review-name">
-            Peter
-          </div>
-
-          <div class="stars">
-            ★★★★★
-          </div>
-
+          <div class="review-name">Peter</div>
+          <div class="stars">★★★★★</div>
         </div>
 
       </div>
 
       <p>
-        Hapa yataonekana maoni
-        halisi ya wateja
-        baada ya kuyakagua.
+        Hapa yataonekana maoni halisi
+        ya wateja baada ya kuyakagua.
       </p>
 
     </article>
@@ -1366,15 +1298,8 @@ button:disabled {
         <div class="avatar">👤</div>
 
         <div>
-
-          <div class="review-name">
-            Awadhi
-          </div>
-
-          <div class="stars">
-            ★★★★★
-          </div>
-
+          <div class="review-name">Awadhi</div>
+          <div class="stars">★★★★★</div>
         </div>
 
       </div>
@@ -1396,23 +1321,15 @@ button:disabled {
         <div class="avatar">👤</div>
 
         <div>
-
-          <div class="review-name">
-            Joshua
-          </div>
-
-          <div class="stars">
-            ★★★★★
-          </div>
-
+          <div class="review-name">Joshua</div>
+          <div class="stars">★★★★★</div>
         </div>
 
       </div>
 
       <p>
-        Telezesha kushoto
-        au kulia kusoma
-        maoni mengine.
+        Telezesha kushoto au kulia
+        kusoma maoni mengine.
       </p>
 
     </article>
@@ -1420,35 +1337,31 @@ button:disabled {
   </div>
 
   <div class="review-dots">
-
     <span class="review-dot active"></span>
     <span class="review-dot"></span>
     <span class="review-dot"></span>
-
   </div>
 
 </section>
 
 </main>
 
-<!-- =====================================
+<!-- ================================
      FOOTER
-===================================== -->
+================================ -->
 
 <footer class="footer">
 
   <div class="footer-item">
 
     <span class="footer-icon">🛡️</span>
-
-    Malipo Salama
+    Malipo Kupitia Simu
 
   </div>
 
   <div class="footer-item">
 
     <span class="footer-icon">⚡</span>
-
     Kitabu Baada ya Uthibitisho
 
   </div>
@@ -1456,7 +1369,6 @@ button:disabled {
   <div class="footer-item">
 
     <span class="footer-icon">🎧</span>
-
     Msaada kwa Wateja
 
   </div>
@@ -1465,9 +1377,9 @@ button:disabled {
 
 </div>
 
-<!-- =====================================
+<!-- ================================
      REVIEW MODAL
-===================================== -->
+================================ -->
 
 <div id="reviewModal" class="modal">
 
@@ -1490,12 +1402,10 @@ button:disabled {
       >
 
       <p style="display:none">
-
         <label>
           Usijaze hapa
           <input name="bot-field">
         </label>
-
       </p>
 
       <input
@@ -1546,28 +1456,20 @@ button:disabled {
 
 </div>
 
-<!-- =====================================
+<!-- ================================
      JAVASCRIPT
-===================================== -->
+================================ -->
 
 <script>
 
 "use strict";
 
-/* ==========================================
+/* ================================
    CONFIGURATION
-========================================== */
+================================ */
 
 /*
-  Weka link halisi za picha zako hapa.
-
-  Mfano:
-
-  const HERO_IMAGE_URL =
-    "images/hero.jpg";
-
-  const BOOK_IMAGE_URL =
-    "images/book.png";
+  Weka link za picha zako hapa.
 */
 
 const HERO_IMAGE_URL = "";
@@ -1575,7 +1477,8 @@ const HERO_IMAGE_URL = "";
 const BOOK_IMAGE_URL = "";
 
 /*
-  Netlify Function ya Abliner.
+  Abliner Netlify Function.
+  Hii ni endpoint ileile ya zamani.
 */
 
 const PAYMENT_ENDPOINT =
@@ -1583,9 +1486,9 @@ const PAYMENT_ENDPOINT =
 
 const AMOUNT = 4000;
 
-/* ==========================================
+/* ================================
    ELEMENTS
-========================================== */
+================================ */
 
 const phoneInput =
   document.getElementById("phone");
@@ -1602,9 +1505,9 @@ const mpesaPanel =
 const mpesaPhone =
   document.getElementById("mpesaPhone");
 
-/* ==========================================
+/* ================================
    LOAD IMAGES
-========================================== */
+================================ */
 
 if (HERO_IMAGE_URL) {
 
@@ -1612,7 +1515,6 @@ if (HERO_IMAGE_URL) {
     document.getElementById("heroImage");
 
   img.src = HERO_IMAGE_URL;
-
   img.style.display = "block";
 
 }
@@ -1623,7 +1525,6 @@ if (BOOK_IMAGE_URL) {
     document.getElementById("bookImage");
 
   img.src = BOOK_IMAGE_URL;
-
   img.style.display = "block";
 
   document.getElementById(
@@ -1632,9 +1533,9 @@ if (BOOK_IMAGE_URL) {
 
 }
 
-/* ==========================================
+/* ================================
    NORMALIZE PHONE
-========================================== */
+================================ */
 
 function normalizePhone(value) {
 
@@ -1642,8 +1543,7 @@ function normalizePhone(value) {
     .replace(/\D/g, "");
 
   /*
-    Convert +255XXXXXXXXX
-    to 0XXXXXXXXX
+    +255XXXXXXXXX -> 0XXXXXXXXX
   */
 
   if (
@@ -1656,8 +1556,8 @@ function normalizePhone(value) {
   }
 
   /*
-    Convert 7XXXXXXXX
-    or 6XXXXXXXX
+    7XXXXXXXX -> 07XXXXXXXX
+    6XXXXXXXX -> 06XXXXXXXX
   */
 
   if (
@@ -1673,100 +1573,56 @@ function normalizePhone(value) {
 
 }
 
-/* ==========================================
+/* ================================
    VALIDATE PHONE
-========================================== */
+================================ */
 
 function validPhone(phone) {
+
+  /*
+    Inakubali:
+    06XXXXXXXX
+    07XXXXXXXX
+
+    Inajumuisha:
+    0664
+    0666
+    0620
+  */
 
   return /^0[67]\d{8}$/.test(phone);
 
 }
 
-/* ==========================================
-   DETECT NETWORK
-========================================== */
+/* ================================
+   M-PESA ROUTING
+================================ */
 
-function detectNetwork(phone) {
-
-  const prefix =
-    phone.substring(0, 3);
+function isMpesaPrefix(phone) {
 
   /*
-    VODACOM M-PESA
+    Kwa utaratibu ulioomba:
+
+    074
+    075
+    076
+    079
+
+    Hizi zinaonyesha malipo
+    ya M-Pesa ya moja kwa moja.
+
+    Tahadhari:
+    Prefix si uthibitisho wa
+    mtandao wa sasa wa namba.
   */
 
-  const vodacom = [
-    "074",
-    "075",
-    "076",
-    "079"
-  ];
-
-  /*
-    HALOPESA
-
-    0620 inatambuliwa
-    kwa sababu inaanza 062.
-  */
-
-  const halopesa = [
-    "061",
-    "062"
-  ];
-
-  /*
-    AIRTEL MONEY
-  */
-
-  const airtel = [
-    "068",
-    "069",
-    "078"
-  ];
-
-  /*
-    MIXX BY YAS
-  */
-
-  const mixx = [
-    "065",
-    "067",
-    "071",
-    "077"
-  ];
-
-  if (vodacom.includes(prefix)) {
-
-    return "mpesa";
-
-  }
-
-  if (halopesa.includes(prefix)) {
-
-    return "halopesa";
-
-  }
-
-  if (airtel.includes(prefix)) {
-
-    return "airtel";
-
-  }
-
-  if (mixx.includes(prefix)) {
-
-    return "mixx";
-
-  }
-
-  return "unknown";
+  return /^07[4569]\d{7}$/.test(phone);
 
 }
 
-/* ==========================================
+/* ================================
    STATUS
-========================================== */
+================================ */
 
 function showStatus(message, error = false) {
 
@@ -1786,9 +1642,9 @@ function clearStatus() {
 
 }
 
-/* ==========================================
+/* ================================
    PHONE INPUT
-========================================== */
+================================ */
 
 phoneInput.addEventListener(
   "input",
@@ -1801,9 +1657,9 @@ phoneInput.addEventListener(
   }
 );
 
-/* ==========================================
+/* ================================
    PAYMENT PROCESS
-========================================== */
+================================ */
 
 payButton.addEventListener(
   "click",
@@ -1812,7 +1668,10 @@ payButton.addEventListener(
     const phone =
       normalizePhone(phoneInput.value);
 
-    /* VALIDATE */
+    /*
+      STEP 1:
+      Hakiki namba.
+    */
 
     if (!validPhone(phone)) {
 
@@ -1827,52 +1686,54 @@ payButton.addEventListener(
 
     }
 
-    const network =
-      detectNetwork(phone);
+    /*
+      STEP 2:
+      M-Pesa manual.
+    */
 
-    /* ==================================
-       M-PESA
-    ================================== */
-
-    if (network === "mpesa") {
+    if (isMpesaPrefix(phone)) {
 
       mpesaPhone.value = phone;
 
       mpesaPanel.classList.add("show");
 
       showStatus(
-        "Kwa namba hii, fuata maelekezo ya M-Pesa hapa chini."
+        "Fuata maelekezo ya malipo ya M-Pesa hapa chini."
       );
 
       mpesaPanel.scrollIntoView({
-
         behavior: "smooth",
         block: "nearest"
-
       });
 
       return;
 
     }
 
-    /* ==================================
-       UNKNOWN NETWORK
-    ================================== */
+    /*
+      STEP 3:
+      Namba nyingine zote halali
+      zinatumwa kwa Abliner.
 
-    if (network === "unknown") {
+      Hakuna detectNetwork().
 
-      showStatus(
-        "Hatukuweza kutambua mtandao wa namba hii. Tafadhali hakiki namba yako.",
-        true
-      );
+      Hakuna unknown network
+      rejection kwenye frontend.
 
-      return;
+      0664 -> Abliner
+      0666 -> Abliner
+      0620 -> Abliner
+      068  -> Abliner
+      069  -> Abliner
+      078  -> Abliner
+      065  -> Abliner
+      067  -> Abliner
+      071  -> Abliner
+      077  -> Abliner
 
-    }
-
-    /* ==================================
-       ABLINER PAYMENT
-    ================================== */
+      Backend ndiyo itakayopokea
+      na kuanzisha ombi la malipo.
+    */
 
     mpesaPanel.classList.remove("show");
 
@@ -1893,59 +1754,67 @@ payButton.addEventListener(
           method: "POST",
 
           headers: {
-
-            "Content-Type":
-              "application/json"
-
+            "Content-Type": "application/json"
           },
 
           body: JSON.stringify({
-
             phone: phone,
             amount: AMOUNT
-
           })
 
         }
 
       );
 
-      const data = await response
-        .json()
-        .catch(() => ({}));
+      let data = {};
+
+      try {
+
+        data = await response.json();
+
+      } catch (_) {
+
+        data = {};
+
+      }
+
+      /*
+        Hapa tunakagua kama
+        request imekubaliwa.
+
+        Haimaanishi malipo
+        yamekamilika.
+      */
 
       if (
         !response.ok ||
-        data.success === false
+        data.success === false ||
+        data.status === "error"
       ) {
 
         throw new Error(
-
           data.message ||
           data.error ||
           "Ombi la malipo halijafanikiwa."
-
         );
 
       }
 
       showStatus(
-        "Ombi la malipo limetumwa. " +
+        "Ombi la malipo limepokelewa. " +
         "Angalia ujumbe rasmi kwenye simu yako. " +
-        "Weka PIN kwenye ujumbe wa mtandao " +
-        "ili kukamilisha malipo. " +
+        "Ikiwa umeupokea, weka PIN yako " +
+        "kwenye ujumbe wa mtandao " +
+        "kukamilisha malipo. " +
         "Usiweke PIN kwenye website hii."
       );
 
     } catch (error) {
 
       showStatus(
-
         error.message ||
         "Imeshindikana kuanzisha malipo. Jaribu tena.",
-
         true
-
       );
 
     } finally {
@@ -1957,9 +1826,9 @@ payButton.addEventListener(
   }
 );
 
-/* ==========================================
-   NETLIFY FORM SUBMISSION
-========================================== */
+/* ================================
+   NETLIFY FORMS
+================================ */
 
 async function submitNetlifyForm(form) {
 
@@ -1979,24 +1848,17 @@ async function submitNetlifyForm(form) {
   }
 
   const response = await fetch(
-
     "/",
-
     {
-
       method: "POST",
 
       headers: {
-
         "Content-Type":
           "application/x-www-form-urlencoded"
-
       },
 
       body: params.toString()
-
     }
-
   );
 
   if (!response.ok) {
@@ -2011,9 +1873,9 @@ async function submitNetlifyForm(form) {
 
 }
 
-/* ==========================================
+/* ================================
    M-PESA CONFIRMATION
-========================================== */
+================================ */
 
 document
   .getElementById("mpesaForm")
@@ -2093,9 +1955,9 @@ document
     }
   );
 
-/* ==========================================
+/* ================================
    REVIEWS SWIPE
-========================================== */
+================================ */
 
 const reviewTrack =
   document.getElementById(
@@ -2124,40 +1986,32 @@ reviewTrack.addEventListener(
         .width + 10;
 
     const index = Math.max(
-
       0,
-
       Math.min(
-
         dots.length - 1,
-
         Math.round(
           reviewTrack.scrollLeft / step
         )
-
       )
-
     );
 
-    dots.forEach(
-      (dot, i) => {
+    dots.forEach((dot, i) => {
 
-        dot.classList.toggle(
-          "active",
-          i === index
-        );
+      dot.classList.toggle(
+        "active",
+        i === index
+      );
 
-      }
-    );
+    });
 
   },
 
   { passive: true }
 );
 
-/* ==========================================
+/* ================================
    REVIEW MODAL
-========================================== */
+================================ */
 
 const reviewModal =
   document.getElementById(
@@ -2170,9 +2024,7 @@ document
     "click",
     () => {
 
-      reviewModal.classList.add(
-        "show"
-      );
+      reviewModal.classList.add("show");
 
     }
   );
@@ -2183,9 +2035,7 @@ document
     "click",
     () => {
 
-      reviewModal.classList.remove(
-        "show"
-      );
+      reviewModal.classList.remove("show");
 
     }
   );
@@ -2194,22 +2044,18 @@ reviewModal.addEventListener(
   "click",
   event => {
 
-    if (
-      event.target === reviewModal
-    ) {
+    if (event.target === reviewModal) {
 
-      reviewModal.classList.remove(
-        "show"
-      );
+      reviewModal.classList.remove("show");
 
     }
 
   }
 );
 
-/* ==========================================
+/* ================================
    REVIEW FORM
-========================================== */
+================================ */
 
 document
   .getElementById("reviewForm")
